@@ -1,0 +1,71 @@
+﻿syntax ="proto3"; 
+import public "protocBuilder/pageInfo.proto";
+import public "protocBuilder/handleResultReply.proto";
+import public "protocBuilder/idModel.proto";
+import public "protocBuilder/removeModel.proto";
+
+package ECP.B2b.Main.GrpcProxy.ProtoProxy.System;  
+
+service MenuProxy {
+    rpc GetListByPage (PageParamsRequest) returns(PageResultReply) {}
+	rpc Add(DbModelMapping) returns (ECP.B2b.Main.GrpcProxy.ProtoProxy.HandleResultReply){}
+	rpc Modify(DbModelMapping) returns (ECP.B2b.Main.GrpcProxy.ProtoProxy.HandleResultReply){}
+	rpc Remove(ECP.B2b.Main.GrpcProxy.ProtoProxy.RemoveModel) returns (ECP.B2b.Main.GrpcProxy.ProtoProxy.HandleResultReply){}
+	rpc FindById(ECP.B2b.Main.GrpcProxy.ProtoProxy.IdModel) returns (DbModelMapping){}
+}
+
+message DbModelMapping
+{
+	int32 ID =1;
+	string MENU_TYPE=2;
+	int32 MAIN_MENU_ID=3;
+	string MENU_NAME=4;
+	int32 ORDER=5;
+	string MENU_URL=6;
+	string IMAGEURL=7;
+	string REMARK=8;
+	string MENU_SORT=9;
+	string TERMINAL_TYPE=10;
+	string CREATION_DATE  =11;         
+	string CREATOR  =12;
+	string LAST_UPDATE_DATE  =13;           
+	string EDITOR=14;
+	string DEL_FLAG=15;
+}
+
+message PageParamsRequest { 
+	message QueryParamsRequest
+	{
+		string MENU_TYPE = 1;
+
+		bool IS_LIKE_MENU_NAME=2;
+		string MENU_NAME =3;
+
+		string MENU_SORT = 4;
+		string TERMINAL_TYPE = 5;
+	}
+
+	ECP.B2b.Main.GrpcProxy.ProtoProxy.PageFilterRequest pageInfo=1;
+	QueryParamsRequest queryPagems = 2;
+}
+
+message PageResultReply
+{
+	message ResultEntity
+	{
+		int32 ID=1;
+		string MENU_TYPE=2;
+		string MENU_NAME=3;
+		int32 ORDER=4;
+		string MENU_URL=5;
+		string MENU_SORT=6;
+		string TERMINAL_TYPE=7;
+		string CREATION_DATE=8;           
+		string CREATOR =9;
+		string LAST_UPDATE_DATE  =10;           
+		string EDITOR=11;
+	}
+
+	int32 totalPageCount=1;
+	repeated ResultEntity resultArray =2;
+}

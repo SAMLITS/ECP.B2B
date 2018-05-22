@@ -1,0 +1,45 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+
+}
+
+@Html.Partial("PartialComLayout/_LayoutList", new ListLayout()
+{
+    IsContentClass = true,
+    Controls = new List<ExtendQueryFormControl>
+                                {
+                                    new ExtendQueryFormControl("MESSAGE_NUMBER", "消息编号" ,ControlType.textbox){ IsLike=true },
+
+                                    new ExtendQueryFormControl("MESSAGE_NAME", "消息代码" ,ControlType.textbox){ IsLike=true },
+
+
+                                    new ExtendQueryFormControl ("MESSAGE_TYPE","消息类型", ControlType.select )
+                                    {
+                                        dataSource = new SelectControlDataSourceSet("XXECP_MESSAGE_TYPE")
+                                    },
+
+                                    new ExtendQueryFormControl("MESSAGE_TEXT", "消息内容" ,ControlType.textbox){ IsLike=true },
+
+                                    new ExtendQueryFormControl( "创建日期" ,ControlType.datetimebet,new  List<DateTimeControlFormProperGroup>
+                                     {
+                                          new DateTimeControlFormProperGroup{ formControl = new FormControl{ Id = "txtSTART_DATE", Name="START_DATE" } },
+                                          new DateTimeControlFormProperGroup{ formControl = new FormControl{ Id = "txtEND_DATE", Name="END_DATE" } }
+                                     }),
+                                 },
+    FormId = "frmQueryWhere",
+    BtnSearchId = "btn_query",
+    tableEntity = new TableEntity
+    {
+        ToolbarId = "toolbar",
+        tableActionButtonControls = new List<ActionButtonControl> {
+             new ActionButtonControl{ btnType = BtnType.Add, Id = "btnAdd" },
+                                                             new ActionButtonControl{ btnType = BtnType.Modify, Id = "btnModify" },
+                                                             new ActionButtonControl{ btnType = BtnType.Delete, Id = "btnDelete" }
+
+         },
+        listdgId = "listdg",
+
+    },
+    contentModalLayoutId = "contentModalLayout"
+})
+<script src="~/Scripts/AreasJs/System/Messages/List.js?v=@ECP.B2b.Manager.Models.AppContextConfigInfo.Version"></script>

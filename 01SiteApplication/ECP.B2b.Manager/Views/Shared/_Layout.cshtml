@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ECP.B2b.Manager</title>
+
+    <environment include="Development">
+    </environment>
+    <link href="~/Scripts/layer/css/layui.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+    <link href="~/css/bootstrap.min.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+    <link href="~/font-awesome/css/font-awesome.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+
+    <link href="~/Scripts/bootstrap-table/bootstrap-table.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.js?v=@AppContextConfigInfo.Version"></script>
+    @*<script src="~/Scripts/jquery-2.0.3.min.js"></script>*@
+
+
+    <script src="~/Scripts/jquery.min.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/bootstrap-table/bootstrap-table.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/bootstrap-table/bootstrap-table-zh-CN.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/bootstrap-table/bootstrap-table-editable.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/My97DatePicker/WdatePicker.js?v=@AppContextConfigInfo.Version"></script>
+
+    <script src="~/Scripts/jquery.validate/jquery.validate.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/jquery.validate/messages_zh.min.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqValidateExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/jquery.validate/SetValidateDefault.js?v=@AppContextConfigInfo.Version"></script>
+
+    <script src="~/Scripts/bootstrap.min.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/matrix/matrix.js?v=@AppContextConfigInfo.Version"></script>
+    
+    <script src="~/Scripts/layer/layui.all.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/layer/layerEx.js?v=@AppContextConfigInfo.Version"></script>
+
+    <link href="~/css/site.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+
+    <script src="~/Scripts/com/JSerializeExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/J_DataHelperCommon.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqueryExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqMessageExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqDateTimeExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqConvertTypeExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <content>
+        @RenderBody()
+    </content>
+    @RenderSection("Scripts", required: false)
+    <script src="~/Scripts/com/J_TableFormStyle.js"></script>
+</body>
+</html>

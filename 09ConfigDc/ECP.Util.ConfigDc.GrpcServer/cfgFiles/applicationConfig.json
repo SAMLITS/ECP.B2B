@@ -1,0 +1,27 @@
+﻿{
+  /*登录授权配置地址*/
+  "ClientLoginTokenAddress": "http://localhost:38216/api/token/ClientLogin",
+  "ClientPrimaryLoginTokenAddress": "http://localhost:38216/api/token/ClientPrimaryLogin/{0}",
+  "ManagerLoginTokenAddress": "http://localhost:38216/api/token/ManagerLogin",
+  "ManagerPrimaryLoginTokenAddress": "http://localhost:38216/api/token/ManagerPrimaryLogin/{0}",
+  "AppLoginTokenAddress": "http://localhost:38216/api/token/AppLogin",
+
+  "ClientFileUploadDomain": "http://xxxxxx",
+  "ManagerFileUploadDomain": "http://xxxxxx",
+  "EncryptKey": "XXXxx#",
+
+  /*token验证相关*/
+  "Issuer": "EcpB2bIssuer",
+  "ManagerAudience": "EcpB2bSiteAudience",
+  "ClientAudience": "EcpB2bSiteAudience",
+  "AppAudience": "EcpB2bAppSiteAudience",
+  /*共享配置相关*/
+  "ClientAppName": "b2b_site",
+  "ClientPersistKeyFilePath": "C:\\share_keys",
+  "ClientMainDomain": "localhost",
+
+  /*ECP_B2B_API_SDK 配置*/
+  "Ecp_b2b_sdk_api_domain": "http://localhost:43676",
+  "Ecp_b2b_sdk_api_secretKey": "XXXXX-XXXXX",
+  "Ecp_open_domain_address": "http://localhost:6435/Account/PrimaryLogin.aspx"
+}

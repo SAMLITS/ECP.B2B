@@ -1,0 +1,32 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+
+}
+@Html.Partial("PartialComLayout/_LayoutList", new ListLayout()
+{
+    IsContentClass = true,
+    Controls = new List<ExtendQueryFormControl>
+                                {
+                                    new ExtendQueryFormControl("LOOKUP_TYPE", "码表代码" ,ControlType.textbox){ IsLike=true },
+
+                                    new ExtendQueryFormControl("LOOKUP_TYPE_NAME", "码表名称" ,ControlType.textbox){ IsLike=true },
+                                 },
+    FormId = "frmQueryWhere",
+    BtnSearchId = "btn_query",
+
+    tableEntity = new TableEntity
+    {
+        ToolbarId = "toolbar",
+        tableActionButtonControls = new List<ActionButtonControl> {
+             new ActionButtonControl{ btnType = BtnType.Add, Id = "btnAdd" },
+                                                             new ActionButtonControl{ btnType = BtnType.Modify, Id = "btnModify" },
+                                                             new ActionButtonControl{ btnType = BtnType.Delete, Id = "btnDelete" }
+
+         },
+        listdgId = "mainListGrid",
+
+    },
+    contentModalLayoutId = "mainContentModalLayout"
+})
+<script src="~/Scripts/AreasJs/System/LookUpValuesAll/List.js"></script>
+<script src="~/Scripts/layer/layerEx.js"></script>

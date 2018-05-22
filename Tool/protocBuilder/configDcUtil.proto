@@ -1,0 +1,47 @@
+﻿
+syntax ="proto3"; 
+package ECP.Util.ConfigDc.ProtoProxy;  
+
+service ConfigDcUtil {
+    rpc GetGrpcServiceConfig (ServiceFindRequest) returns(ServiceFindReply) {}
+	rpc GetDbConnectionConfig (DbConfigRequest) returns(DbConfigReply) {}
+	rpc GetApplicationConfig(ApplicationConfigRequest) returns(ApplicationConfigReply) {}
+	rpc GetServerAddress(ServerAddressRequest) returns(ServerAddressReply){}
+}  
+
+message ServerAddressRequest
+{
+	string serverName=1;
+}
+message ServerAddressReply
+{
+	string serverAddress=1;
+	string serverIp=2;
+	int32 serverPort=3;
+}
+
+
+message DbConfigRequest {
+	string keyName=1;
+}
+message DbConfigReply {
+	string dbConfigVal = 1;
+} 
+
+
+message ServiceFindRequest {
+    string serviceName = 1;
+	string serviceType = 2;
+}
+
+message ServiceFindReply {  
+    string serviceAddress = 1;
+}  
+
+message ApplicationConfigRequest {
+    string configKey = 1;
+}
+
+message ApplicationConfigReply {  
+    string configValue = 1;
+}  

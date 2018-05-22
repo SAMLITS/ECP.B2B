@@ -1,0 +1,31 @@
+﻿@model ECP.Util.HtmlHelper.PartialExtend.Entity.ExtendDateTimeControl
+@{ 
+    Layout = null;
+}
+ 
+<input class="Wdate Wdate2 form-control " type="text" onclick="WdatePicker({
+
+dateFmt: '@Model.dtProperSet.formatter'
+@if(!string.IsNullOrEmpty(Model.dtProperSet.maxControlId))
+{
+    <text>, maxDate: '#F{$dp.$D(\'@Model.dtProperSet.maxControlId\')}'</text>
+}
+@if (!string.IsNullOrEmpty(Model.dtProperSet.minControlId))
+{
+    <text>, minDate: '#F{$dp.$D(\'@Model.dtProperSet.minControlId\')}'</text>
+}
+
+@if (!string.IsNullOrEmpty(Model.dtProperSet.minDateVal))
+{
+    <text>, minDate:'@Model.dtProperSet.minDateVal'</text>
+}
+
+@if (Model.dtProperSet.IsMinCurrentDate)
+{
+    <text>, minDate:'%y-%M-%d'</text>
+}
+
+
+})"  
+name="@Model.Name" id="@Model.Id" value="@Model.defaultVal" @if (Model.IsDefaultDisabled)
+{ <text> disabled</text>} />

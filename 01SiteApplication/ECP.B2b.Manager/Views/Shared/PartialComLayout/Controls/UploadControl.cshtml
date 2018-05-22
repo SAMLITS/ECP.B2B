@@ -1,0 +1,23 @@
+﻿ @model ECP.Util.HtmlHelper.FileUploadFilterEntity;
+@{
+    Layout = null;
+    string btnId = "btn" + Guid.NewGuid().ToString();
+}
+
+<button type="button" class="btn btn-success glyphicon glyphicon-cloud-upload" style="padding:4px 6px;" id="@btnId">选择上传</button>
+<script>
+    $(function () {
+        $("#@btnId").click(function () {
+             var config = {
+                fileAccept: '@Model.fileAccept',
+                exts: '@Model.exts',
+                size: @Model.size,
+                multiple:  @Model.multiple.ToString().ToLower(),
+                uploadPath: '@Model.uploadPath',
+                @if (!string.IsNullOrEmpty(Model.onSuccessCallback)) { <text>onSuccessCallback: '@Model.onSuccessCallback',</text>}
+            };
+             var configParams = $.parseParam(config);
+            layerEx.iframeModal("/file/upload?" + configParams, "文件上传", {area:["900px","500px"]});
+        });
+    });
+</script>

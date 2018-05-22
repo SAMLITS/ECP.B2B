@@ -1,0 +1,291 @@
+﻿@using ECP.B2b.DbModel.Sys;
+@using ECP.B2b.DbModel.Basic;
+@using ECP.Util.Common.Extensions;
+@{
+    //Layout = "_AlterLayoutJs";
+    //Layout = null;
+
+    List<B2B_MENU> menus = (List<B2B_MENU>)ViewBag.Menus;
+    List<B2B_MENU_FUNCTION> menuFunctions = (List<B2B_MENU_FUNCTION>)ViewBag.MenuFunctions;
+    List<B2B_USER_FUNCTION> userFunctions = (List<B2B_USER_FUNCTION>)ViewBag.UserFunctions;
+
+}
+
+@{
+    if (menus.Count == 0)
+    {
+        <script>
+            $(function () { 
+                $.alert(3235, function () { 
+                    parent.$(".layui-layer-title")[0].innerText = "菜单分配";
+                    location.href = "/System/User/Authority?ID=" + @ViewBag.ID;
+                })
+            })
+        </script>
+    }
+    else
+    {
+<form class="form-horizontal" id="authority-modify-form">
+    <input type="hidden" id="hidAuthority_USER_ID" name="USER_ID" value="@ViewBag.ID" />
+    <div class="container">
+        <div class="row">
+            <div class="form-group row">
+                <div class="col-sm-6" style="padding:20px">
+                    <button type="button" class="btn btn-success" id="btn-check-all">全选</button>
+                    <button type="button" class="btn btn-danger" id="btn-uncheck-all">取消</button>
+                    <button type="button" class="btn btn-success" id="btn-save-all">保存结果</button>
+                </div>
+            </div>
+            <br />
+            <div class="col-sm-4">
+                <div id="treeview-checkable" class=""></div>
+            </div>
+            @*<div class="col-sm-4">
+                    <h2>Events</h2>
+                    <div id="checkable-output"></div>
+                </div>*@
+        </div>
+    </div>
+</form>
+@*<script src="~/Scripts/jquery.min.js"></script>*@
+
+<script src="~/Scripts/bootstrap-table/bootstrap-treeview.js"></script>
+<script type="text/javascript">
+
+
+     var defaultData = [
+            @foreach (var menu in menus.Where(m => m.MENU_TYPE == "M").OrderBy(m=>m.ORDER))
+            {
+                <text>{
+             text:"@menu.MENU_NAME",
+             tags: ["menu",@menu.ID],
+
+             @{ var subMenus = menus.Where(m => m.MAIN_MENU_ID == menu.ID);}
+
+             @if(userFunctions.Exists(u=> subMenus.Select(s=>s.ID).Contains(u.MENU_ID.ToIntByIntNull())))
+             {
+                  <text>
+                        state: { checked: true },
+                  </text>
+             }
+
+
+             nodes: [
+                         @foreach (var subMenu in subMenus.OrderBy(s => s.ORDER))
+                         {
+                                <text>
+                    {
+                         text: "@subMenu.MENU_NAME",
+                         tags: ["menu",@menu.ID,@subMenu.ID],
+                         @if (userFunctions.Exists(u =>u.MENU_ID==subMenu.ID))
+                         {
+                              <text>
+                                    state: { checked: true },
+                              </text>
+                         }
+                         nodes: [
+                                             @foreach (var sunMenu in menus.Where(m => m.MAIN_MENU_ID == subMenu.ID).OrderBy(s => s.ORDER))
+                                             {
+                                                <text>
+                                                {
+                                                     text: "@sunMenu.MENU_NAME",
+                                                     tags: ["menu",@menu.ID,@sunMenu.ID],
+                                                     @if (userFunctions.Exists(u =>u.MENU_ID==sunMenu.ID))
+                                                     {
+                                                          <text>
+                                                                state: { checked: true },
+                                                          </text>
+                                                     }
+                                                     nodes: [
+                                                         @foreach (var menuFunction in menuFunctions.Where(u=>u.MENU_ID==sunMenu.ID))
+                                                             {
+                                                                  <text>
+                                                                    {
+                                                                         text: "@menuFunction.FUNCTION_DESC",
+                                                                         tags: ["function",@sunMenu.ID,@menuFunction.ID,"@menuFunction.FUNCTION_CODE"],
+                                                                         @if (userFunctions.Exists(u =>u.MENU_FUNCTION_ID == menuFunction.ID))
+                                                                         {
+                                                                              <text>
+                                                                                    state: { checked: true },
+                                                                              </text>
+                                                                         }
+                                                                    },
+                                                                 </text>
+                                                         }
+                                                            ]
+
+                                                  },
+                                                  </text>
+                                             }
+                                    ]
+                    },
+                                </text>
+                         }
+                ]
+         },</text>
+                        }
+         ];
+
+
+    $(function () {
+
+                            var $checkableTree = $('#treeview-checkable').treeview({
+                                data: defaultData,
+            showIcon: false,
+            showCheckbox: true,
+            levels:1,
+            onNodeChecked: nodeChecked,
+            onNodeUnchecked: nodeUnchecked
+                    });
+
+        var findCheckableNodess = function () {
+            return $checkableTree.treeview('search', [$('#input-check-node').val(), { ignoreCase: false, exactMatch: false }]);
+        };
+            var checkableNodes = findCheckableNodess();
+
+        $('#input-check-node').on('keyup', function (e) {
+                checkableNodes = findCheckableNodess();
+            $('.check-node').prop('disabled', !(checkableNodes.length >= 1));
+            });
+
+        $('#btn-check-node.check-node').on('click', function (e) {
+            $checkableTree.treeview('checkNode', [checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+            });
+
+        $('#btn-uncheck-node.check-node').on('click', function (e) {
+            $checkableTree.treeview('uncheckNode', [checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+            });
+
+        $('#btn-toggle-checked.check-node').on('click', function (e) {
+            $checkableTree.treeview('toggleNodeChecked', [checkableNodes, { silent: $('#chk-check-silent').is(':checked') }]);
+            });
+
+        $('#btn-check-all').on('click', function (e) {
+            $checkableTree.treeview('checkAll', { silent: $('#chk-check-silent').is(':checked') });
+            });
+
+        $('#btn-uncheck-all').on('click', function (e) {
+            $checkableTree.treeview('uncheckAll', { silent: $('#chk-check-silent').is(':checked') });
+            });
+
+        $("#btn-save-all").on("click", function (e) {
+
+            var checkedArray = $checkableTree.treeview('getChecked');
+            var userFunctionsList = [];
+            //拿到所有选取的子节点
+            for (var i = 0; i < checkedArray.length; i++)
+            {
+                if (checkedArray[i].tags[0] == "function")
+                {
+                    userFunctionsList.push({
+                        USER_ID:@ViewBag.ID,
+                        MENU_ID:checkedArray[i].tags[1],
+                        MENU_FUNCTION_ID: checkedArray[i].tags[2],
+                        MENU_FUNCTION_CODE: checkedArray[i].tags[3]
+                    });
+                }
+            }
+            if (userFunctionsList.length == 0)
+            {
+                userFunctionsList.push({
+                        USER_ID:@ViewBag.ID,
+                        MENU_ID:-100,
+                        MENU_FUNCTION_ID: -100,
+                        MENU_FUNCTION_CODE: ""
+                    });
+            }
+
+
+            $.onExPostReq({
+                reqUrl: "Function",
+                params:{
+                    userFunctions: userFunctionsList
+                },
+                onSuccess: function (response) {
+                    $.alert(response.NumberMsg, null, null);
+                }
+            });
+        });
+
+
+
+        /**
+         * 以下 代码 实现级联选择
+         */
+
+        var nodeCheckedSilent = false;
+        function nodeChecked(event, node) {
+            if (nodeCheckedSilent) {
+                return;
+            }
+            nodeCheckedSilent = true;
+            checkAllParent(node);
+            checkAllSon(node);
+            nodeCheckedSilent = false;
+        }
+
+        var nodeUncheckedSilent = false;
+        function nodeUnchecked(event, node) {
+            if (nodeUncheckedSilent)
+                return;
+            nodeUncheckedSilent = true;
+            uncheckAllParent(node);
+            uncheckAllSon(node);
+            nodeUncheckedSilent = false;
+        }
+
+        //选中全部父节点
+        function checkAllParent(node) {
+            $('#treeview-checkable').treeview('checkNode', node.nodeId, { silent: true });
+            var parentNode = $('#treeview-checkable').treeview('getParent', node.nodeId);
+            if (!("nodeId" in parentNode)) {
+                return;
+            } else {
+                checkAllParent(parentNode);
+            }
+        }
+        //取消全部父节点
+        function uncheckAllParent(node) {
+            $('#treeview-checkable').treeview('uncheckNode', node.nodeId, { silent: true });
+            var siblings = $('#treeview-checkable').treeview('getSiblings', node.nodeId);
+            var parentNode = $('#treeview-checkable').treeview('getParent', node.nodeId);
+            if (!("nodeId" in parentNode)) {
+                return;
+            }
+            var isAllUnchecked = true;  //是否全部没选中
+            for (var i in siblings) {
+                if (siblings[i].state.checked) {
+                    isAllUnchecked = false;
+                    break;
+                }
+            }
+            if (isAllUnchecked) {
+                uncheckAllParent(parentNode);
+            }
+
+        }
+
+        //级联选中所有子节点
+        function checkAllSon(node) {
+            $('#treeview-checkable').treeview('checkNode', node.nodeId, { silent: true });
+            if (node.nodes != null && node.nodes.length > 0) {
+                for (var i in node.nodes) {
+                    checkAllSon(node.nodes[i]);
+                }
+            }
+        }
+        //级联取消所有子节点
+        function uncheckAllSon(node) {
+            $('#treeview-checkable').treeview('uncheckNode', node.nodeId, { silent: true });
+            if (node.nodes != null && node.nodes.length > 0) {
+                for (var i in node.nodes) {
+                    uncheckAllSon(node.nodes[i]);
+                }
+            }
+        }
+
+    });
+</script>
+}
+}
+

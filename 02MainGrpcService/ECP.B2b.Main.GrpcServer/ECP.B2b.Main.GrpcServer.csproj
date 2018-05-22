@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="log-file.log" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="Grpc" Version="1.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\07DAL\ECP.B2b.EF\ECP.B2b.EF.csproj" />
+    <ProjectReference Include="..\..\08Utility\ECP.B2b.ServerRegisterModuleIoc\ECP.B2b.ServerRegisterModuleIoc.csproj" />
+    <ProjectReference Include="..\..\08Utility\ECP.Util.Common\ECP.Util.Common.csproj" />
+    <ProjectReference Include="..\..\09ConfigDc\ECP.Util.ConfigDc.GrpcClient\ECP.Util.ConfigDc.GrpcClient.csproj" />
+    <ProjectReference Include="..\..\ECP.B2b.DBUtility\ECP.B2b.DBUtility.csproj" />
+    <ProjectReference Include="..\ECP.B2b.Main.GrpcProxy\ECP.B2b.Main.GrpcProxy.csproj" />
+    <ProjectReference Include="..\ECP.B2b.Main.GrpcService\ECP.B2b.Main.GrpcService.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cfgFiles\bindAddressServices.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cfgFiles\log4net.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

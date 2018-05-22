@@ -1,0 +1,14 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+}
+
+@Html.Partial("PartialComLayout/_LayoutList", new ListLayout()
+{
+    IsContentClass = false,
+    Controls = new List<ExtendQueryFormControl>
+    {
+          new ExtendQueryFormControl("MENU_ID",ControlType.hidden){ Id="hidMENU_ID" ,IsFixed=true,defaultVal=ViewBag.MENU_ID  }
+    }
+})
+<script src="~/Scripts/AreasJs/System/MenuFunction/List.js?v=@ECP.B2b.Manager.Models.AppContextConfigInfo.Version"></script> 
+

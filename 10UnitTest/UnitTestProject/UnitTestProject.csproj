@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="Grpc" Version="1.4.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.1.18" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.1.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcClient.Interface\ECP.B2b.Main.GrpcClient.Interface.csproj" />
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcClient\ECP.B2b.Main.GrpcClient.csproj" />
+    <ProjectReference Include="..\..\09ConfigDc\ECP.Util.ConfigDc.GrpcProxy\ECP.Util.ConfigDc.GrpcProxy.csproj" />
+    <ProjectReference Include="..\..\ECP.B2b.Main.GrpcClientGroup.Interface\ECP.B2b.Main.GrpcClientGroup.Interface.csproj" />
+    <ProjectReference Include="..\..\ECP.B2b.Main.GrpcClientGroup\ECP.B2b.Main.GrpcClientGroup.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cfgFiles\log4net.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

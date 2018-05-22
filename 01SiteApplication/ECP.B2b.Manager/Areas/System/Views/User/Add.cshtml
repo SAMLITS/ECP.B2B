@@ -1,0 +1,54 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity
+@using ECP.Util.HtmlHelper;
+@{
+    Layout = null;
+    //“交易方类型”字段默认值为当前用户的类型且灰显，“交易方名称”默认当前用户的平台名称并灰显不可编辑；
+    var currentUser = Context.GetCurrentUser();
+}
+
+@Html.Partial("PartialComLayout/_LayoutSingleForm", new SingleFormLayout()
+{
+    FormId = "user-add-form",
+    IsContentClass = false,
+    colCount = 3,
+    Controls = new List<ExtendSingleFormControl>
+    {
+        #region 用户账户 交易方类型 交易方名称
+        new ExtendSingleFormControl("USER","用户账户",ControlType.textbox){ Id="txtAddUSER",IsRequired_hint=true},
+
+        new ExtendSingleFormControl("PARTY_TYPE", "交易方类型", ControlType.select)
+        {
+            Id = "selAddPARTY_TYPE",
+            dataSource = new SelectControlDataSourceSet("PARTY_TYPE"),
+            defaultVal = currentUser.PARTY_TYPE,
+            IsDefaultDisabled=true
+        },
+
+        new ExtendSingleFormControl("PARTY_NAME","交易方名称",ControlType.textbox){ Id="txtAddPARTY_NAME",IsDefaultDisabled=true,defaultVal= currentUser.PartyEntity.PARTY_NAME},
+	    #endregion
+
+        #region 用户密码 是否主账号  真实姓名
+        new ExtendSingleFormControl("PASSWORD","用户密码",ControlType.textbox){ Id="txtAddPASSWORD",IsRequired_hint=true,defaultVal=ViewBag.UserPassword},
+        new ExtendSingleFormControl("IS_MAIN", "是否主账号", ControlType.select)
+        {
+            Id="selAddIS_MAIN",
+            IsRequired_hint=true,
+            dataSource = new SelectControlDataSourceSet("YES_NO"),
+            defaultVal="Y"
+        },
+        new ExtendSingleFormControl("USER_NAME","真实姓名",ControlType.textbox){ Id="txtAddUSER_NAME",IsRequired_hint=true},
+	    #endregion
+
+        #region  手机号 邮箱 生效日期
+        new ExtendSingleFormControl("MOBILE","手机号",ControlType.textbox){ Id="txtAddMOBILE",IsRequired_hint=true},
+        new ExtendSingleFormControl("MAIL","邮箱",ControlType.textbox){ Id="txtAddMAIL",IsRequired_hint=true},
+        new ExtendSingleFormControl("START_DATE","生效日期",ControlType.datetime){ Id="txtAddSTART_DATE",IsRequired_hint=true,defaultVal=DateTime.Now.ToString("yyyy-MM-dd"), dtProperSet = new DateTimeControlProperSet{ maxControlId="txtAddEND_DATE" } },
+	    #endregion
+
+        #region  失效日期 备注
+        new ExtendSingleFormControl("END_DATE","失效日期",ControlType.datetime){ Id="txtAddEND_DATE", dtProperSet = new DateTimeControlProperSet{ minControlId="txtAddSTART_DATE" }},
+        new ExtendSingleFormControl("REMARK","备注",ControlType.textbox){ Id="txtAddREMARK"}
+	    #endregion
+    }
+})
+<script src="~/Scripts/AreasJs/System/User/Add.js"></script>

@@ -1,0 +1,30 @@
+﻿@{
+}
+
+<form class="form-horizontal" id="authority-modify-form">
+    <input type="hidden" id="hidMENU_SORT" name="MENU_SORT" value="@ViewBag.MENU_SORT" />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div id="treeview-checkable" class=""></div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="~/Scripts/bootstrap-table/bootstrap-treeview.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $.onExPostReq({
+            reqUrl: "/System/Menu/GetMenusTree",
+            params: { MENU_SORT: $("#hidMENU_SORT").val()},
+            onSuccess: function (response) {
+                $('#treeview-checkable').treeview({
+                    data: response,
+                    showIcon: false,
+                    levels: 1
+                });
+            }
+        });
+    });
+</script>

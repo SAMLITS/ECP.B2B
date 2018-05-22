@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="ExcDelstProxy\**" />
+    <EmbeddedResource Remove="ExcDelstProxy\**" />
+    <None Remove="ExcDelstProxy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="Grpc" Version="1.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\08Utility\ECP.Util.Common\ECP.Util.Common.csproj" />
+    <ProjectReference Include="..\..\08Utility\ECP.Util.Grpc\ECP.Util.Grpc.csproj" />
+    <ProjectReference Include="..\..\09ConfigDc\ECP.Util.ConfigDc.GrpcClient\ECP.Util.ConfigDc.GrpcClient.csproj" />
+    <ProjectReference Include="..\ECP.B2b.Main.GrpcClient.Interface\ECP.B2b.Main.GrpcClient.Interface.csproj" />
+    <ProjectReference Include="..\ECP.B2b.Main.GrpcProxy\ECP.B2b.Main.GrpcProxy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+</Project>

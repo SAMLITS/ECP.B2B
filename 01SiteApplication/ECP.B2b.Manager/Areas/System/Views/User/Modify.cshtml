@@ -1,0 +1,75 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity
+@{
+    Layout = null;
+}
+
+@Html.Partial("PartialComLayout/_LayoutSingleForm", new SingleFormLayout()
+{
+    FormId = "user-modify-form",
+    IsContentClass = false,
+    colCount = 3,
+    Controls = new List<ExtendSingleFormControl>
+    {
+        new ExtendSingleFormControl("ID",ControlType.hidden)   {  Id="hidID" , IsFixed=true },
+        #region 用户账号 交易方类型 交易方名称
+        new ExtendSingleFormControl("USER","用户账户",ControlType.textbox){ Id="txtModifyUSER",IsDefaultDisabled=true},
+
+        new ExtendSingleFormControl("PARTY_TYPE", "交易方类型", ControlType.select)
+        {
+            Id = "selModifyPARTY_TYPE",
+            dataSource = new SelectControlDataSourceSet("PARTY_TYPE"),
+            IsDefaultDisabled=true
+        },
+        new ExtendSingleFormControl("PARTY_NAME","交易方名称",ControlType.textbox){ Id="txtModifyPARTY_NAME",IsDefaultDisabled=true},
+	    #endregion
+
+        #region 用户密码 确认密码 是否主账号
+        new ExtendSingleFormControl("PASSWORD","用户密码",ControlType.password){ Id="pwdModifyPASSWORD"},
+        new ExtendSingleFormControl("CONFIRM_PASSWORD","确认密码",ControlType.password){ Id="pwdModifyCONFIRM_PASSWORD"},
+        new ExtendSingleFormControl("IS_MAIN", "是否主账号", ControlType.select)
+        {
+            Id="selModifyIS_MAIN",
+            dataSource = new SelectControlDataSourceSet("YES_NO"),
+            IsRequired_hint=true
+        },
+	    #endregion
+
+        #region  真实姓名 手机号 邮箱
+        new ExtendSingleFormControl("USER_NAME","真实姓名",ControlType.textbox){ Id="txtModifyUSER_NAME",IsRequired_hint=true},
+        new ExtendSingleFormControl("MOBILE","手机号",ControlType.textbox){ Id="txtModifyMOBILE",IsRequired_hint=true},
+        new ExtendSingleFormControl("MAIL","邮箱",ControlType.textbox){ Id="txtModifyMAIL",IsRequired_hint=true},
+	    #endregion
+
+        #region  注册状态 创建日期 密码更新时间
+        new ExtendSingleFormControl("REG_STATUS", "注册状态", ControlType.select)
+        {
+            IsRequired_hint=true,
+            dataSource = new SelectControlDataSourceSet("REG_STATUS")
+        },
+        new ExtendSingleFormControl("CREATION_DATE","创建日期",ControlType.datetime){ Id="txtModifyCREATION_DATE",IsDefaultDisabled=true,dtProperSet = new DateTimeControlProperSet()},
+        new ExtendSingleFormControl("PASSWORD_UPDATE_TIME","密码更新时间",ControlType.datetime){ Id="txtModifyPASSWORD_UPDATE_TIME",IsDefaultDisabled=true,dtProperSet = new DateTimeControlProperSet() },
+        #endregion
+
+        #region 已绑定微信号 是否强制微信登录 生效日期
+        new ExtendSingleFormControl("IS_BIND_WXIN", "已绑定微信号", ControlType.select)
+        {
+            Id="selModifyIS_BIND_WXIN",
+            dataSource = new SelectControlDataSourceSet("YES_NO"),
+            IsDefaultDisabled=true
+        },
+        new ExtendSingleFormControl("IS_WXIN_LOGIN", "是否强制微信登录", ControlType.select)
+        {
+            Id="selModifyIS_WXIN_LOGIN",
+            dataSource = new SelectControlDataSourceSet("YES_NO"),
+            IsDefaultDisabled=true
+        },
+        new ExtendSingleFormControl("START_DATE","生效日期",ControlType.datetime){ Id="txtModifySTART_DATE",IsRequired_hint=true,dtProperSet = new DateTimeControlProperSet{ maxControlId="txtModifyEND_DATE" } },
+        #endregion
+
+        #region 失效日期 备注
+        new ExtendSingleFormControl("END_DATE","失效日期",ControlType.datetime){ Id="txtModifyEND_DATE", dtProperSet = new DateTimeControlProperSet{ minControlId="txtModifySTART_DATE" }},
+        new ExtendSingleFormControl("REMARK","备注",ControlType.textbox){ Id="txtModifyREMARK"}
+        #endregion
+    }
+})
+<script src="~/Scripts/AreasJs/System/User/Modify.js"></script>

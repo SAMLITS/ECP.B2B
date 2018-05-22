@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework> 
+    <RuntimeIdentifiers>win8-x64;osx.10.11-x64</RuntimeIdentifiers> 
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="logs\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <None Remove="logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="Grpc" Version="1.4.1" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\08Utility\ECP.Util.Common\ECP.Util.Common.csproj" />
+    <ProjectReference Include="..\..\ECP.Util.ConfigDc.Helper\ECP.Util.ConfigDc.Helper.csproj" />
+    <ProjectReference Include="..\ECP.Util.ConfigDc.GrpcProxy\ECP.Util.ConfigDc.GrpcProxy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cfgFiles\bindAddressServices.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cfgFiles\dbConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cfgFiles\log4net.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="cfgFiles\serviceRegiser.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+
+</Project>

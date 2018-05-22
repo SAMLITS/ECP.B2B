@@ -1,0 +1,8 @@
+﻿syntax ="proto3"; 
+package ECP.B2b.Main.GrpcProxy.ProtoProxy;  
+ 
+message RemoveModel {
+	int32 ID=1;
+	string LAST_UPDATE_DATE=2;           
+	string EDITOR=3; 
+}

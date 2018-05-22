@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="Grpc" Version="1.4.1" />
+    <PackageReference Include="protobuf-net" Version="2.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\09ConfigDc\ECP.Util.ConfigDc.GrpcClient\ECP.Util.ConfigDc.GrpcClient.csproj" />
+    <ProjectReference Include="..\ECP.Util.Common\ECP.Util.Common.csproj" />
+  </ItemGroup>
+
+</Project>

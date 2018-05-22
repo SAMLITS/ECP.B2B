@@ -1,0 +1,79 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+    Layout = null;
+
+    ExtendSingleFormControl mainMenuControl = null;
+    string menuName = "菜单名称";
+    ExtendSingleFormControl fatherMenuNameControl = null;
+    if (ViewBag.MENU_TYPE == "S")
+    {
+        mainMenuControl = new ExtendSingleFormControl("MAIN_MENU_NAME", "主菜单", ControlType.textbox) { Id = "txtMAIN_MENU_NAME", IsDefaultDisabled = true };
+        menuName = "子菜单名称";
+    }
+    else
+    {
+        fatherMenuNameControl = new ExtendSingleFormControl("MAIN_MENU_NAME", "父层菜单名称", ControlType.textbox) { Id = "txtMAIN_MENU_NAME", IsDefaultDisabled = true };
+    }
+}
+
+
+@Html.Partial("PartialComLayout/_LayoutSingleForm", new SingleFormLayout()
+{
+    FormId = "menu-modify-form",
+    IsContentClass = false,
+    colCount = 1,
+    Controls = new List<ExtendSingleFormControl>
+    {
+        new ExtendSingleFormControl("ID",ControlType.hidden)   {  Id="hidID" , IsFixed=true },
+        new ExtendSingleFormControl("MAIN_MENU_ID",ControlType.hidden)   {  Id="hidMAIN_MENU_ID" , IsFixed=true },
+        new ExtendSingleFormControl("MENU_TYPE",ControlType.hidden)   {  Id="hidMENU_TYPE" , IsFixed=true },
+        mainMenuControl,
+        new ExtendSingleFormControl("ORDER","序号",ControlType.textbox){ Id="txtORDER", IsRequired_hint = true},
+        new ExtendSingleFormControl("MENU_CODE", "菜单代码" ,ControlType.textbox){ Id="txtMENU_CODE",IsDefaultDisabled=true },
+        new ExtendSingleFormControl("MENU_NAME", menuName,ControlType.textbox){ Id="txtMENU_NAME", IsRequired_hint = true},
+        new ExtendSingleFormControl("MENU_URL", "URL" ,ControlType.textbox){ Id="txtMENU_URL"},
+        new ExtendSingleFormControl("","图标",ControlType.parialcontrol){ IsRequired_hint=true,  PartialViewName="PartialLayout/MenuIconLayout_"},
+        new ExtendSingleFormControl ("MENU_SORT","菜单种类", ControlType.select )
+        {
+            IsPersonDisabled=true,
+            Id="selMENU_SORT",
+            dataSource = new SelectControlDataSourceSet("MENU_SORT")
+        },
+        fatherMenuNameControl,
+        new ExtendSingleFormControl ("IS_AVAILABLE","是否有效", ControlType.select )
+        {
+            Id="selIS_AVAILABLE",
+            IsRequired_hint=true,
+            dataSource = new SelectControlDataSourceSet("YES_NO")
+        },
+        new ExtendSingleFormControl ("IS_ALLOCATED","是否可分配", ControlType.select )
+        {
+            Id="selIS_ALLOCATED",
+            IsRequired_hint=true,
+            dataSource = new SelectControlDataSourceSet("YES_NO")
+        },
+        new ExtendSingleFormControl("TERMINAL_TYPE","适用终端类别",ControlType.select)
+        {
+            IsPersonDisabled = true,
+            Id="selTERMINAL_TYPE",
+            dataSource = new SelectControlDataSourceSet("TERMINAL_TYPE")
+        },
+        new ExtendSingleFormControl("REMARK", "备注" ,ControlType.textarea){ Id="txtREMARK"},
+    }
+});
+
+<script type="text/javascript">
+    $(function () {
+        $("#selMENU_SORT").rdisabled();
+        $("#selTERMINAL_TYPE").rdisabled();
+        $('#menu-add-form').validate({
+            rules: {
+                MENU_NAME: { required: true },
+                ORDER: { required: true, digits: true, min: 1 }
+            },
+            messages: {
+                ORDER: { digits: "请输入正整数序号", min: "请输入正整数序号" }
+            }
+        });
+    });
+</script>

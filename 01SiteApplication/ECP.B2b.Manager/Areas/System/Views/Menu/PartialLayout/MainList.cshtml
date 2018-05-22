@@ -1,0 +1,65 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+    Layout = null;
+
+}
+
+@Html.Partial("PartialComLayout/_LayoutList", new ListLayout()
+{
+    IsContentClass = false,
+    Controls = new List<ExtendQueryFormControl>
+    {
+          new ExtendQueryFormControl("MENU_TYPE",ControlType.hidden)   {  defaultVal = "M" , IsFixed=true },
+
+
+          new ExtendQueryFormControl("MENU_CODE", "菜单代码" ,ControlType.textbox){ IsLike=true },
+          new ExtendQueryFormControl("MENU_NAME", "菜单名称" ,ControlType.textbox){ IsLike=true },
+
+
+          new ExtendQueryFormControl ("MENU_SORT","菜单种类", ControlType.select )
+          {
+              dataSource = new SelectControlDataSourceSet("MENU_SORT")
+          },
+
+
+          new ExtendQueryFormControl("TERMINAL_TYPE","适用终端类别",ControlType.select)
+          {
+              dataSource = new SelectControlDataSourceSet("TERMINAL_TYPE")
+          },
+
+          new ExtendQueryFormControl("IS_AVAILABLE","是否有效",ControlType.select)
+          {
+              dataSource = new SelectControlDataSourceSet("YES_NO")
+          }
+    },
+    tableEntity = new TableEntity
+    {
+        tableActionButtonControls = new List<ActionButtonControl>
+        {
+             new ActionButtonControl(BtnType.Add),
+             new ActionButtonControl(BtnType.Modify),
+             new ActionButtonControl(BtnType.Delete),
+            new ActionButtonControl ("btnShowPaths", "菜单层次结构", BtnType.Show)
+        },
+    }
+})
+
+<div id="contentModalLayoutShowPaths" style="display:none">
+    @Html.Partial("PartialComLayout/_LayoutSingleForm", new SingleFormLayout()
+{
+    FormId = "menu-showPaths-form",
+    IsContentClass = false,
+    colCount = 1,
+    Controls = new List<ExtendSingleFormControl>
+    {
+          new ExtendSingleFormControl ("MENU_SORT","菜单种类", ControlType.select )
+          {
+              Id="txtShowPathsMENU_SORT",
+              dataSource = new SelectControlDataSourceSet("MENU_SORT"),
+              IsRequired_hint=true
+          }
+    }
+})
+</div>
+<script src="~/Scripts/AreasJs/System/Menu/MainList.js?v=@ECP.B2b.Manager.Models.AppContextConfigInfo.Version"></script>
+

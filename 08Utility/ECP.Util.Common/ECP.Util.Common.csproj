@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Net.NameResolution" Version="4.3.0" />
+    <PackageReference Include="ZKWeb.System.Drawing" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\05Model\ECP.B2b.AttributeModel\ECP.B2b.AttributeModel.csproj" />
+    <ProjectReference Include="..\..\05Model\ECP.B2b.ModelDto\ECP.B2b.ModelDto.csproj" />
+    <ProjectReference Include="..\..\09ConfigDc\ECP.Util.ConfigDc.GrpcClient\ECP.Util.ConfigDc.GrpcClient.csproj" />
+  </ItemGroup>
+
+</Project>

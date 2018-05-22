@@ -1,0 +1,99 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity
+@using ECP.Util.HtmlHelper;
+@{
+    var currentUser = Context.GetCurrentUser();
+}
+
+@Html.Partial("PartialComLayout/_LayoutSingleForm", new SingleFormLayout()
+{
+    FormId = "user-personalset-form",
+    IsContentClass = false,
+    colCount = 3,
+    Controls = new List<ExtendSingleFormControl>
+    {
+        new ExtendSingleFormControl("ID", "主键" ,ControlType.hidden){ Id="hidSetID",IsFixed=true,defaultVal=currentUser.ID.ToString()},
+        #region 用户账户  是否主账户 交易方名称
+        new ExtendSingleFormControl("USER","用户账户",ControlType.textbox){ Id="txtSetUSER", IsDefaultDisabled = true},
+
+        new ExtendSingleFormControl("IS_MAIN", "是否主账号", ControlType.select)
+        {
+            Id="selSetIS_MAIN",
+            dataSource = new SelectControlDataSourceSet("YES_NO"),
+            IsDefaultDisabled=true
+        },
+
+        new ExtendSingleFormControl("PARTY_NAME", "交易方名称" ,ControlType.textbox){ Id="txtSetPARTY_NAME",IsDefaultDisabled=true},
+        #endregion
+
+        #region 姓名  手机号 邮箱
+        new ExtendSingleFormControl("USER_NAME","姓名",ControlType.textbox){ Id="txtSetUSER_NAME",IsRequired_hint=true},
+
+         new ExtendSingleFormControl("MOBILE","手机号",ControlType.textbox){ Id="txtSetMOBILE",IsRequired_hint=true},
+
+        new ExtendSingleFormControl("MAIL","邮箱",ControlType.textbox){ Id="txtSetMAIL",IsRequired_hint=true},
+        #endregion
+
+        #region 密码问题  密码答案 密码最后更新时间
+        new ExtendSingleFormControl("PW_QUESTION", "密码问题", ControlType.select)
+        {
+            Id="selSetPW_QUESTION",
+            dataSource = new SelectControlDataSourceSet("PW_QUESTION"),
+            IsRequired_hint=true
+        },
+
+        new ExtendSingleFormControl("PW_ANSWER","密码答案",ControlType.textbox){ Id="txtSetPW_ANSWER",IsRequired_hint=true},
+
+        new ExtendSingleFormControl("PASSWORD_UPDATE_TIME","密码更新时间",ControlType.datetime){ Id="txtSetPASSWORD_UPDATE_TIME",IsDefaultDisabled=true,dtProperSet = new DateTimeControlProperSet() },
+        #endregion
+
+         #region 已关联微信  微信号 是否强制微信登录
+        new ExtendSingleFormControl("IS_BIND_WXIN", "已绑定微信号", ControlType.select)
+        {
+            Id="selSetIS_BIND_WXIN",
+            dataSource = new SelectControlDataSourceSet("YES_NO"),
+            IsDefaultDisabled=true
+        },
+
+        new ExtendSingleFormControl("WX_NICK_NAME","微信号",ControlType.textbox){ Id="txtSetWX_NICK_NAME",IsDefaultDisabled=true},
+
+        new ExtendSingleFormControl("IS_WXIN_LOGIN", "是否强制微信登录", ControlType.select)
+        {
+            Id="selSetIS_WXIN_LOGIN",
+            dataSource = new SelectControlDataSourceSet("YES_NO"),
+            IsPersonDisabled=true
+        },
+        #endregion
+
+        #region 最后登录时间
+        new ExtendSingleFormControl("LAST_LOGIN_DATE","最后登录时间",ControlType.datetime){ Id="txtSetLAST_LOGIN_DATE",IsDefaultDisabled=true,dtProperSet = new DateTimeControlProperSet() },
+        #endregion
+        },
+    actionButtonControls = new List<ActionButtonControl>()
+    {
+        new ActionButtonControl(){Title="密码更改",btnType=BtnType.Modify,Id="btnSetChangePwd" },
+        new ActionButtonControl(){ Title="保存",btnType=BtnType.Submit,Id="btnSetSave"},
+        new ActionButtonControl(){ Title="绑定微信",btnType=BtnType.User,Id="btnSetBindWeixin"},
+    },
+})
+
+<div id="contentModalLayout_ChangePwd" style="display:none">
+    @Html.Partial("PartialComLayout/_LayoutSingleForm", new SingleFormLayout()
+{
+    FormId = "user-changePwd-form",
+    IsContentClass = false,
+    colCount = 1,
+    Controls = new List<ExtendSingleFormControl>
+    {
+        new ExtendSingleFormControl("ID","用户ID",ControlType.hidden){ Id="hidChangePwd_ID",IsFixed=true,defaultVal=currentUser.ID.ToString()},
+
+        new ExtendSingleFormControl("USER","用户名",ControlType.textbox){ Id="txtChangePwd_USER", IsDefaultDisabled = true,defaultVal=currentUser.USER},
+
+        new ExtendSingleFormControl("ORIGINAL_PASSWORD","原密码",ControlType.password){ Id="pwdChangePwd_ORIGINAL_PASSWORD", IsRequired_hint = true},
+
+        new ExtendSingleFormControl("PASSWORD","新密码",ControlType.password){ Id="pwdChangePwd_PASSWORD", IsRequired_hint = true},
+
+        new ExtendSingleFormControl("CONFIRM_PASSWORD","新密码确认",ControlType.password){ Id="pwdChangePwd_CONFIRM_PASSWORD", IsRequired_hint = true}
+    }
+})
+</div>
+<script src="~/Scripts/AreasJs/System/User/PersonalSet.js"></script>

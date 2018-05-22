@@ -1,0 +1,8 @@
+bin/
+obj/
+logs/
+TestResults/
+*/ecp_b2b_api_builder
+/Tool/protocBuilder/class/
+.vs/
+Uploads/

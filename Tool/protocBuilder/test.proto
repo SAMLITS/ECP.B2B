@@ -1,0 +1,10 @@
+﻿syntax ="proto3"; 
+package ECP.B2b.Main.GrpcProxy.ProtoProxy.System;  
+
+
+
+message ModelEntityRq
+{
+	optional int32 Id=1;
+	optional string Name=2;
+}

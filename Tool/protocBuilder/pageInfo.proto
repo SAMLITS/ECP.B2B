@@ -1,0 +1,9 @@
+﻿syntax ="proto3"; 
+package ECP.B2b.Main.GrpcProxy.ProtoProxy;  
+ 
+message PageFilterRequest {
+	int32 PageIndex=1;
+	int32 PageSize=2;
+	string SortName =3;
+	string SortOrder =4;
+} 

@@ -1,0 +1,97 @@
+﻿@model ECP.Util.HtmlHelper.PartialExtend.Entity.ExtendSelectControl
+@{
+    //码表显示
+    Layout = null;
+}
+
+@if (Model.dataSource.DictionaryData != null)
+{
+    <select class="form-control" name="@Model.Name" id="@Model.Id"  @if (Model.IsDefaultDisabled) { <text>disabled</text>} >
+
+       @if (Model.IsAllOption)
+       {
+        @if (string.IsNullOrEmpty(Model.defaultVal))
+        {
+            <option value="" selected="selected">All</option>
+        }
+        else
+        {
+            <option value="">All</option>
+        }
+       }
+        @if (Model.dataSource.IsShowEmptyOption)
+        { 
+             <option value=""></option> 
+        }
+
+
+        @foreach (var item in Model.dataSource.DictionaryData)
+        {
+            @if (item.Key == Model.defaultVal)
+            {
+                <option value="@item.Key" selected="selected">@item.Value</option>
+            }
+            else
+            {
+                <option value="@item.Key">@item.Value</option>
+            }
+        }
+    </select>
+}
+else if (Model.dataSource.LookupName != null)
+{
+    
+
+    <select class="form-control" name="@Model.Name" id="@Model.Id"  @if (Model.IsDefaultDisabled) { <text>disabled</text>}>
+        @if (Model.IsAllOption)
+        {
+            @if (string.IsNullOrEmpty(Model.defaultVal))
+            {
+                <option value="" selected="selected">All</option>
+            }
+            else
+            {
+                <option value="">All</option>
+            }
+        }
+
+        @if (Model.dataSource.IsShowEmptyOption)
+        {
+            <option value=""></option>
+        }
+
+        @if (Model.dataSource.LookupTypeSource == ECP.Util.HtmlHelper.PartialExtend.Entity.LookupTypeSource.B2B)
+        {
+           @await Component.InvokeAsync("LookUpValues", new ECP.B2b.ComEntity.Filter.LookUpValues.LookUpValuesByTypeParams
+              {
+                  IsBetweenOt = Model.dataSource.IsBetweenOt,
+                  LookUpName = Model.dataSource.LookupName,
+                  LOOKUP_CODE_List = Model.dataSource.LOOKUP_CODE_List,
+                  ATTIBUTE1 = Model.dataSource.ATTIBUTE1,
+                  ATTIBUTE2 = Model.dataSource.ATTIBUTE2,
+                  ATTIBUTE3 = Model.dataSource.ATTIBUTE3,
+                  ATTIBUTE4 = Model.dataSource.ATTIBUTE4,
+                  ATTIBUTE5 = Model.dataSource.ATTIBUTE5,
+                  TAG = Model.dataSource.TAG,
+                  defaultValue = Model.defaultVal
+              })
+        }
+        else
+        {
+            @await Component.InvokeAsync("ECP_LookUpValues", new ECP.B2b.ComEntity.Filter.LookUpValues.LookUpValuesByTypeParams
+       {
+           IsBetweenOt = Model.dataSource.IsBetweenOt,
+           LookUpName = Model.dataSource.LookupName,
+           LOOKUP_CODE_List = Model.dataSource.LOOKUP_CODE_List,
+           ATTIBUTE1 = Model.dataSource.ATTIBUTE1,
+           ATTIBUTE2 = Model.dataSource.ATTIBUTE2,
+           ATTIBUTE3 = Model.dataSource.ATTIBUTE3,
+           ATTIBUTE4 = Model.dataSource.ATTIBUTE4,
+           ATTIBUTE5 = Model.dataSource.ATTIBUTE5,
+           TAG = Model.dataSource.TAG,
+           defaultValue = Model.defaultVal
+       })
+        }
+    </select>
+    
+}

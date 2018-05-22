@@ -1,0 +1,163 @@
+﻿{
+  "BaseService": {
+    "AddService": "address-1",
+    "AddRangeService": "address-1",
+    "PageService": "address-1",
+    "ModifyService": "address-1",
+    "RemoveService": "address-1",
+    "FindByIdService": "address-1",
+    "FindAllService": "address-1",
+    "ValidAdd_ModifyService": "address-1",
+    "ValidDeleteService": "address-1",
+    "ModifyDicService": "address-1",
+    "ModifyRangeDicService": "address-1",
+    "FindNameListByIdListService": "address-1",
+    "FindIdListByNameContainsService": "address-1",
+    "FindAllByEntityService": "address-1",
+    "FindByEntityService": "address-1",
+    "CQueryPageService": "address-1",
+    "RemoveClearService": "address-1",
+    "RemoveClearRangeService": "address-1"
+  },
+  "ExtendService": {
+
+
+    "b2b_user_LastLoginTimeReload": "address-1",
+    "b2b_user_LoginOut": "address-1",
+    "b2b_user_ManagerUserLogin": "address-1",
+    "b2b_user_UnBindWx": "address-1",
+
+    "b2b_menu_GetUserMenus": "address-1",
+
+    "b2b_lookup_values_GetLookUpValuesByType": "address-1",
+
+    "b2b_messages_FindMessageByAlert": "address-1",
+    "b2b_messages_GetMaxMessagesNumber": "address-1",
+
+
+    "b2b_sequence_GetSequenceNo": "address-1",
+    "b2b_sys_profile_AddService": "address-1",
+
+    "b2b_sys_profile_GetPROFILE_NAME_BY_CODE": "address-1",
+
+
+    "b2b_party_FindNamesByIdList": "address-1",
+
+    "b2b_party_Certifcate": "address-1",
+    "b2b_party_FindIdListByNameLike": "address-1",
+
+    "b2b_user_menu_FindMenuByUser": "address-1",
+    "b2b_user_menu_SetMenuByUser": "address-1",
+
+    "b2b_user_UserLogin": "address-1",
+    "b2b_party_Register": "address-1",
+
+
+
+    "b2b_city_FindCityNamesByIdList": "address-1",
+
+
+
+    "b2b_country_GetSelectDownList": "address-1",
+    "b2b_province_GetSelectDownList": "address-1",
+    "b2b_city_GetSelectDownList": "address-1",
+    "b2b_district_GetSelectDownList": "address-1",
+
+    "b2b_inv_FindNamesByIdListService": "address-1",
+
+    "b2b_inv_FindIdListByNameLike": "address-1",
+
+    "b2b_subinv_FindNotExistExcSubInvList": "address-1",
+
+    "b2b_exc_member_FindPartyIdListByExcId": "address-1",
+    "b2b_exc_member_FindExchangeIdListByPartId": "address-1",
+    "b2b_exc_member_GetMaxMemberNumberByExchangeID": "address-1",
+    "b2b_exc_member_IsUserValidModel": "address-1",
+
+    "b2b_exchange_FindNamesByIdList": "address-1",
+
+    "b2b_exchange_FindIdListByNameLike": "address-1",
+    "b2b_exchange_FindChangeAll": "address-1",
+
+    "b2b_eb_acct_setup_IsExistParty": "address-1",
+    "b2b_eb_acct_setup_PartyIdToEntity": "address-1",
+    "b2b_eb_acct_setup_IsPassWord": "address-1",
+
+
+    "b2b_inv_FindNamesByIdList": "address-1",
+
+
+    "b2b_item_FindNamesByIdList": "address-1",
+
+    "b2b_item_FindIdListByItemNameLike": "address-1",
+    "b2b_item_FindIdListByItemCodeLike": "address-1",
+
+
+
+
+    "b2b_eb_inv_GetSumAmount": "address-1",
+    "b2b_eb_inv_GetEbInvListByPartyIdList": "address-1",
+
+    "b2b_exc_inv_FindInvIdListByExcId": "address-1",
+
+    "b2b_exc_subinv_ValidExcMemberPass": "address-1",
+    "b2b_exc_subinv_FindSubInvIdListByParentsId": "address-1",
+    "b2b_exc_subinv_FindByMemberExcSubInvParams": "address-1",
+
+    "b2b_eb_paytool_acct_FindNamesByIdList": "address-1",
+
+
+    "b2b_eb_cashbill_AddReserVationOrCashBill": "address-1",
+
+    "b2b_eb_reservation_GetSumAmount": "address-1",
+    "b2b_eb_reservation_GetSumAmountByPartyIdsList": "address-1",
+
+    "b2b_eb_cashbill_EBRecharge_DBTra": "address-1",
+    "b2b_inv_quantity_SumInvIoExistQuantity": "address-1",
+    "b2b_inv_reservation_SumQuantity": "address-1",
+    "b2b_inv_io_SubmitInvIO": "address-1",
+    "b2b_inv_io_SubSubmitInvIoOut_ClientDBTr": "address-1",
+
+    "b2b_inv_io_CancelInvIO": "address-1",
+    "b2b_inv_quantity_GetInvIOExistInvQuantityList": "address-1",
+
+    "b2b_exc_lst_ExcLstAdd_DBTra": "address-1",
+    "b2b_exc_lst_ExcLstDown_DBTra": "address-1",
+    "b2b_exc_item_FindExcItemIdListByExcId": "address-1",
+    "b2b_exc_lst_AddDelstOJgdtl": "address-1",
+
+    "b2b_exc_jg_dtl_GetListByPage_M": "address-1",
+
+    "b2b_eb_inv_GetEbInvByPartyAndSourcesList": "address-1",
+
+    "b2b_eb_cashbill_OutSubmit": "address-1",
+    "b2b_eb_cashbill_GetEbInvByPartyAndSourcesList": "address-1",
+    "b2b_exc_jg_dtl_JGChange_DBTra": "address-1",
+    "b2b_eb_cash_pay_AddCashPay": "address-1",
+    "b2b_fin_credit_back_AddBackArg": "address-1",
+    "b2b_fin_credit_agr_SubmitAgrToRelease_DBTra": "address-1",
+    "b2b_eb_cashbill_AddBillTypeOut_DBTra": "address-1",
+
+    "b2b_exc_jg_dtl_DelayChange_DBTra": "address-1",
+    "b2b_exc_jg_dtl_JG_Compensate_DBTra": "address-1",
+    "b2b_exc_jg_dtl_JG_Cancel_DBTra": "address-1",
+
+
+    "b2b_bbs_BbsList": "address-1",
+    "b2b_news_NewsList": "address-1",
+    "b2b_party_user_receipt_GetListByPageUserReceipt": "address-1",
+
+    "b2b_user_UpdatePwd": "address-1",
+
+    "b2b_party_WxRegister": "address-1",
+    "b2b_shop_item_appendix_GetMaxAppendixNumber": "address-1",
+    "b2b_shop_item_pic_GetMaxShopItemPicNumber": "address-1",
+    "b2b_shop_lst_dtl_GetMaxLstDtlNumber": "address-1",
+    "b2b_item_attribute_value_FindAllByAttributeCodeIdList": "address-1",
+
+    "b2b_shop_rfq_IsExistRfq": "address-1",
+
+    "b2b_user_function_SetFunctionByUser": "address-1",
+    "ecp_dis_order_all_AddTrans": "address-1"
+  }
+}

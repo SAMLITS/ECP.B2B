@@ -1,0 +1,121 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+    Layout = null;
+    var ENABLED_FLAGFormControl = new ExtendQueryFormControl("ENABLED_FLAG", "启用标识", ControlType.select)
+    {
+        dataSource = new SelectControlDataSourceSet("YES_NO")
+    };
+}
+
+<form class="form-horizontal" id="lookUpValues-modify-form">
+    <input type="hidden" id="hidID" name="ID"  />
+    <input type="hidden" name="LOOKUP_VALUES_ALL_ID" id="hidLOOKUP_VALUES_ALL_ID"/>
+    <div class="panel-body">
+        <table class="form-group">
+            <tr>
+                <td for="tdLOOKUP_CODE">值代码：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="LOOKUP_CODE" id="txtLOOKUP_CODE" disabled/>
+                    </div>
+                </td>
+                <td for="tdLOOKUP_MEANING"><label class="required-hint">*</label>值名称：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="LOOKUP_MEANING" id="txtLOOKUP_MEANING" />
+                    </div>
+                </td>
+            </tr>
+
+            @* 启用标识&&属性1 *@
+            <tr>
+                <td for="tdLOOKUP_TYPE">启用标识：</td>
+                <td>
+                    <div class="input_parent">
+                        @Html.Partial("PartialComLayout/_LayoutControlSelect", ENABLED_FLAGFormControl.GetExtendSelectControl(false))
+                    </div>
+                </td>
+
+                <td for="tdLOOKUP_TYPE_NAME">属性1：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="ATTIBUTE1" id="txtATTIBUTE1" />
+                    </div>
+                </td>
+            </tr>
+
+            @* 属性2&&属性3*@
+            <tr>
+                <td for="tdATTIBUTE2">属性2：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="ATTIBUTE2" id="txtATTIBUTE2" />
+                    </div>
+                </td>
+
+                <td for="tdATTIBUTE3">属性3：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="ATTIBUTE3" id="txtATTIBUTE3" />
+                    </div>
+                </td>
+            </tr>
+
+            @* 属性4&&属性5*@
+            <tr>
+                <td for="tdATTIBUTE4">属性4：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="ATTIBUTE4" id="txtATTIBUTE4" />
+                    </div>
+                </td>
+
+                <td for="tdATTIBUTE5">属性5：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="ATTIBUTE5" id="txtATTIBUTE5" />
+                    </div>
+                </td>
+            </tr>
+
+            @*启用日期&&失效日期*@
+            <tr>
+                <td for="tdSTART_DATE_ACTIVE"><label class="required-hint">*</label>生效日期：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control Wdate Wdate2" type="text" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'txtModifyEND_DATE_ACTIVE\')}' })" name="START_DATE_ACTIVE" id="txtModifySTART_DATE_ACTIVE"/>
+                    </div>
+                </td>
+
+                <td for="tdEND_DATE_ACTIVE">失效日期：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control Wdate Wdate2" type="text" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd',minDate: '#F{$dp.$D(\'txtModifySTART_DATE_ACTIVE\')}'  })" name="END_DATE_ACTIVE" id="txtModifyEND_DATE_ACTIVE" />
+                    </div>
+                </td>
+            </tr>
+
+            @*标签*@
+            <tr>
+                <td for="tdSTART_DATE_ACTIVE">标签：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="TAG" id="txtTAG" />
+                    </div>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td for="tdLOOKUP_DESCRIPTION ">说明：</td>
+                <td colspan="3" class="col-sm-2">
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="LOOKUP_DESCRIPTION" id="txtLOOKUP_DESCRIPTION" style="width:515px" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+<script src="~/Scripts/AreasJs/System/LookUpValues/Modify.js"></script>

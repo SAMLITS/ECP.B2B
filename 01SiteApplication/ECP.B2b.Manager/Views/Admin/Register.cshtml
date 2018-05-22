@@ -1,0 +1,170 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+    Layout = null;
+    var PARTY_SORTFormControl = new ExtendQueryFormControl("PARTY_SORT", "交易方种类", ControlType.select)
+    {
+        dataSource = new SelectControlDataSourceSet("PARTY_SORT") { TAG="FIN" }
+    }; 
+    var COMPANY_TYPEFormControl = new ExtendQueryFormControl("COMPANY_TYPE", "交易方性质", ControlType.select)
+    {
+        Id = "selCOMPANY_TYPE",
+        dataSource = new SelectControlDataSourceSet("COMPANY_TYPE"),
+        defaultVal = "COM"
+    };
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>B2B-金融服务方注册</title>
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="bookmark" href="./images/favicon.ico">
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/register.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate/messages_zh.min.js"></script>
+    <script src="~/Scripts/com/JqValidateExtend.js"></script>
+    <script src="~/Scripts/jquery.validate/SetValidateDefault.js"></script>
+    <script src="~/Scripts/layer/layui.all.js"></script>
+    <script src="~/Scripts/layer/layerEx.js"></script>
+    <script src="~/Scripts/com/JSerializeExtend.js"></script>
+    <script src="~/Scripts/com/J_DataHelperCommon.js"></script>
+    <script src="~/Scripts/com/JqueryExtend.js"></script>
+    <script src="~/Scripts/com/JqMessageExtend.js"></script>
+    <script src="~/Scripts/AreasJs/Admin/Register.js"></script>
+    <script src="~/Scripts/com/J_TableFormStyle.js"></script>
+</head>
+<body class="ember-application">
+
+    <div id="ember227" class="ember-view">
+        <div class="wrap">
+            <div class="logos ">
+                <a href="/"><img src="../images/logo1.jpg" /></a><a href="/"><img src="../images/logo2.jpg" /></a>
+            </div>
+            <div  class="content mt20">
+                <h2 class="f18 yahei c_h2">中农批生猪/畜禽电子商务平台之注册</h2>
+                <form class="form-horizontal" id="user-register-form" novalidate="novalidate">
+                    <table class="form-group mt20">
+                        <tr>
+                            <td><label class="required-hint">*</label>用户名称：</td>
+                            <td>
+                                <input class="form-control" type="text" name="USER" id="txtUSER" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label class="required-hint">*</label>用户密码：</td>
+                            <td>
+                                <input class="form-control" name="PASSWORD" id="pwdPASSWORD" type="password" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>再次输入用户密码：</td>
+                            <td>
+                                <input class="form-control" name="CONFIRM_PASSWORD" id="pwdCONFIRM_PASSWORD" type="password" />
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label class="required-hint">*</label>交易方种类：</td>
+                            <td>
+                                @Html.Partial("PartialComLayout/_LayoutControlSelect", PARTY_SORTFormControl.GetExtendSelectControl(false))
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>交易方性质：</td>
+                            <td>
+                                <div class='input_parent'>
+                                    @Html.Partial("PartialComLayout/_LayoutControlSelect", COMPANY_TYPEFormControl.GetExtendSelectControl(false))
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>交易方全称：</td>
+                            <td>
+                                <input class="form-control" type="text" name="PARTY_NAME" id="txtPARTY_NAME" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>国家：</td>
+                            <td>
+                                @Html.Partial("PartialComLayout/Controls/Address/SelectCountry")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>省/直辖市：</td>
+                            <td>
+                                @Html.Partial("PartialComLayout/Controls/Address/SelectProvince")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>市/地区：</td>
+                            <td>
+                                @Html.Partial("PartialComLayout/Controls/Address/SelectCity")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>区/县：</td>
+                            <td>
+                                @Html.Partial("PartialComLayout/Controls/Address/SelectDistrict")
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>街道/乡镇：</td>
+                            <td>
+                                <input class="form-control" type="text" name="STREET" id="txtSTREET" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>详细地址：</td>
+                            <td>
+                                <input class="form-control" type="text" name="ADDRESS" id="txtADDRESS" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>姓名：</td>
+                            <td>
+                                <input class="form-control" type="text" name="CMAN" id="txtCMAN" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>手机号：</td>
+                            <td>
+                                <input class="form-control" type="text" name="CMAN_MOBILE" id="txtCMAN_MOBILE" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label class="required-hint">*</label>E-MAIL：</td>
+                            <td>
+                                <input class="form-control" type="text" name="CMAN_MAIL" id="txtCMAN_MAIL" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td>
+                                @*<input type="checkbox" name="Agreement" id="cbAgreement" /> <a href="" onclick="ReadAgr('CbAgreement')" target="_blank" onmouseover="AgrUrlOver(this)" onmouseout="AgrUrlOut(this)" style="width: 202px;color:#E78a29;">入驻平台协议</a>
+                                <input type="checkbox" name="Agreement" id="ebAgreement" /> <a href="" onclick="ReadAgr('EbAgreement')" target="_blank" onmouseover="AgrUrlOver(this)" onmouseout="AgrUrlOut(this)" style="width: 202px;color:#E78a29;">E币服务协议</a>*@
+                                <input type="checkbox" name="Agreement" id="cbAgreement" /> <a href="Agreement" target="_blank" onmouseover="AgrUrlOver(this)" onmouseout="AgrUrlOut(this)" style="width: 202px;color:#E78a29;">入驻平台协议</a>
+                                <input type="checkbox" name="Agreement" id="ebAgreement" /> <a href="EBAgreement" target="_blank" onmouseover="AgrUrlOver(this)" onmouseout="AgrUrlOut(this)" style="width: 202px;color:#E78a29;">E币服务协议</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </form>
+                <div style="text-align: center;">
+                    <button type="button" id="btn_quit" class="btn btn-primary" style="margin-right:50px;">放弃</button>
+                    <button type="button" id="btn_submit" class="btn btn-primary" disabled>提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

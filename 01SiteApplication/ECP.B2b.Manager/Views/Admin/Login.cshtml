@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "";
+}
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta name="author" content="b2b" />
+    <meta charset="utf-8" />
+    <title>B2B-AdminLogin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="~/login/css/style.css" rel="stylesheet" />
+    <link href="~/login/css/reset.css" rel="stylesheet" />
+    <link href="~/login/css/supersized.css" rel="stylesheet" /> 
+<style>
+    form {
+        position: relative;
+        width: 305px;
+        margin: 15px auto 0 auto;
+        text-align: center;
+    }
+
+  
+     
+</style>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    
+</head>
+<body>
+
+    <div class="page-container">
+        <h1>B2B-AdminLogin</h1>
+        <form action="/Admin/Login" method="post">
+            @*<img class="fenxiao" src="~/images/manage1.png" />*@
+            <input type="text" name="USER" class="username" placeholder="账号" required>
+            <input type="password" name="PASSWORD" class="password" placeholder="密码" required>
+            <div id="liValidateCode">
+                <span style="float:left">
+                    <input  id="CheckCode" maxlength="22" size="11" name="CheckCode" style="width: 110px" required >
+                </span>
+                <span style="margin: 22px 0px 0px 10px; float: left; height: 45px; line-height: 45px;">
+                    <a id="A2">
+                  
+                        <img id="imgVerify" src="/admin/ValidateCode" alt="看不清？点击更换" onclick="this.src = this.src + '?'" style="vertical-align:middle;    border-radius: 5px;
+    width: 118px;" />
+                    </a>
+                </span>
+            </div>
+            <button type="submit">登 录</button>
+            <button id="btn_register"  type="button">金融服务方注册</button>
+            @*<div class="error">@ViewBag.Error</div>*@
+        </form>
+        <div class="connect">
+            <p>****公司</p>
+        </div>
+    </div>
+   </body>
+</html>
+ <!-- Javascript -->
+<script src="~/login/js/jquery-1.8.2.min.js"></script>
+<script src="~/login/js/supersized.3.2.7.min.js"></script>
+<script src="~/login/js/supersized-init.js"></script>
+<script src="~/login/js/scripts.js"></script>
+
+<script src="~/Scripts/layer/layui.all.js"></script>
+<script src="~/Scripts/layer/layerEx.js"></script>  
+<script src="~/Scripts/com/J_DataHelperCommon.js"></script>
+<script src="~/Scripts/com/JqueryExtend.js"></script>
+<script src="~/Scripts/com/JqMessageExtend.js"></script>
+
+<script>
+    $(function ()
+    {
+        @if(!string.IsNullOrEmpty(ViewBag.Error))
+        {
+            <text> $.alert(@ViewBag.Error, null, null);</text>
+        }
+     });
+</script>

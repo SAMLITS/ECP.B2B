@@ -1,0 +1,55 @@
+﻿@model List<ECP.Util.HtmlHelper.PartialExtend.Entity.PartialTabsEentity>
+@{
+    Layout = null;
+    //多个选项卡 单独 页面
+}
+
+
+<div id="content">
+    <ul id="myTab" class="nav nav-tabs">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            string id = "#navTab"+i;
+            if (i == 0)
+            { 
+                    @:
+                        <li class="active">
+        <a href="@id" data-toggle="tab">
+            @Model[i].TabTitle
+        </a>
+    </li>
+            }
+            else
+            {
+                    @:
+                        <li>
+        <a href="@id" data-toggle="tab">
+            @Model[i].TabTitle
+        </a>
+    </li>
+            }
+
+        }
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            string id = "navTab" + i;
+            if (i == 0) {
+                @: 
+                    <div class="tab-pane fade in active" id="@id">
+        @Html.Partial(Model[i].PartialViewName)
+        </div>
+            }
+            else
+            {
+                @: 
+                    <div class="tab-pane fade" id="@id">
+                    
+        @Html.Partial(Model[i].PartialViewName)
+        </div>
+            }
+         }
+        </div>
+    
+</div>

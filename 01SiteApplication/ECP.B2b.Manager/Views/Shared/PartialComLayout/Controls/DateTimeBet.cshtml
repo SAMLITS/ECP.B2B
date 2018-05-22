@@ -1,0 +1,13 @@
+﻿@model List<ECP.Util.HtmlHelper.PartialExtend.Entity.ExtendDateTimeControl>
+@{
+    //时间区间显示  前一个小于后一个   后一个大于前一个   Model中只会有两个
+    Layout = null;
+}
+
+<div class="input_parent wdate_div_width">
+    <input class="form-control Wdate Wdate1" type="text" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd', maxDate: '#F{$dp.$D(\'@Model[1].Id\')}' })"  name="@Model[0].Name" id="@Model[0].Id" value="@Model[0].defaultVal" width="100"  @if (Model[0].IsDefaultDisabled) { <text>disabled</text>} />
+</div>
+    <div class="fontzhi">至</div>
+    <div class="input_parent wdate_div_width">
+    <input class="form-control Wdate Wdate1" type="text"  name="@Model[1].Name" id="@Model[1].Id" value="@Model[1].defaultVal"   onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd', minDate: '#F{$dp.$D(\'@Model[0].Id\')}', maxDate: '2220-10-01' })"     width="100"  @if (Model[1].IsDefaultDisabled) { <text>disabled</text>} />
+</div>

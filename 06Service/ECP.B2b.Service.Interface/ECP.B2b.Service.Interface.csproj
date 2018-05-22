@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Basic\IB2B_PARTY_Service.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\05Model\ECP.B2b.ComEntity\ECP.B2b.ComEntity.csproj" />
+    <ProjectReference Include="..\..\05Model\ECP.B2b.DbExtendModel\ECP.B2b.DbExtendModel.csproj" />
+    <ProjectReference Include="..\..\05Model\ECP.B2b.DbModel\ECP.B2b.DbModel.csproj" />
+    <ProjectReference Include="..\..\08Utility\ECP.Util.Common\ECP.Util.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+</Project>

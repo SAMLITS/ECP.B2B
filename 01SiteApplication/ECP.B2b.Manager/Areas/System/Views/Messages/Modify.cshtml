@@ -1,0 +1,74 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+    Layout = null;
+    var MESSAGE_TYPEFormControl = new ExtendQueryFormControl("MESSAGE_TYPE", "消息类型", ControlType.select)
+    {
+        dataSource = new SelectControlDataSourceSet("XXECP_MESSAGE_TYPE")
+    };
+}
+
+<form class="form-horizontal" id="messages-modify-form">
+    <input type="hidden" id="hidID" name="ID" />
+    <div class="panel-body">
+        <table class="form-group">
+
+            @* 消息编号&&消息代码 *@
+            <tr>
+                <td for="tdMESSAGE_NUMBER">消息编号：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="MESSAGE_NUMBER" id="txtMESSAGE_NUMBER"  disabled="disabled"/>
+                    </div>
+                </td>
+                <td for="tdMESSAGE_NAME">消息代码：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="MESSAGE_NAME" id="txtMESSAGE_NAME" disabled="disabled"/>
+                    </div>
+                </td>
+            </tr>
+
+            @* 消息类型&&说明*@
+            <tr>
+                <td for="tdMESSAGE_TYPE">消息类型：</td>
+                <td>
+                    <div class="input_parent">
+                        @Html.Partial("PartialComLayout/_LayoutControlSelect", MESSAGE_TYPEFormControl.GetExtendSelectControl(false))
+                    </div>
+                </td>
+                <td for="tdMESSAGE_DESCRIPTION ">说明：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="MESSAGE_DESCRIPTION" id="txtMESSAGE_DESCRIPTION" />
+                    </div>
+                </td>
+            </tr>
+
+            @* 消息内容 *@
+            <tr>
+                <td for="tdMESSAGE_TEXT"><label class="required-hint">*</label>消息内容：</td>
+                <td colspan="3" class="col-sm-2">
+                    <div class="input_parent">
+                        <textarea class="form-control" name="MESSAGE_TEXT" id="txtMESSAGE_TEXT" style="width:540px"></textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        //设置必填字段前端校验
+        $('#messages-modify-form').validate({
+            rules: {
+                //消息内容
+                MESSAGE_TEXT: { required: true }
+            },
+            messages: {
+                MESSAGE_TEXT:"消息内容不能为空"
+            }
+        });
+    });
+</script>
+

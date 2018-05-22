@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\05Model\ECP.B2b.DbExtendModel\ECP.B2b.DbExtendModel.csproj" />
+    <ProjectReference Include="..\..\05Model\ECP.B2b.DbModel\ECP.B2b.DbModel.csproj" />
+    <ProjectReference Include="..\..\06Service\ECP.B2b.Service.Interface\ECP.B2b.Service.Interface.csproj" />
+    <ProjectReference Include="..\..\06Service\ECP.B2b.Service\ECP.B2b.Service.csproj" />
+    <ProjectReference Include="..\ECP.B2b.Main.GrpcProxy\ECP.B2b.Main.GrpcProxy.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="cfgFiles\log4net.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+</Project>

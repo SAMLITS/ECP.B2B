@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcClient.Interface\ECP.B2b.Main.GrpcClient.Interface.csproj" />
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcClient\ECP.B2b.Main.GrpcClient.csproj" />
+    <ProjectReference Include="..\..\ECP.B2b.Main.GrpcClientGroup.Interface\ECP.B2b.Main.GrpcClientGroup.Interface.csproj" />
+    <ProjectReference Include="..\..\ECP.B2b.Main.GrpcClientGroup\ECP.B2b.Main.GrpcClientGroup.csproj" />
+  </ItemGroup>
+
+</Project>

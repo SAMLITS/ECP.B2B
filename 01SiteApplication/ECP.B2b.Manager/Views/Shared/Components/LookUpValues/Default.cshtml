@@ -1,0 +1,21 @@
+﻿@using ECP.B2b.ModelDto.System.LookUpValues;
+@using ECP.B2b.ComEntity.Filter.LookUpValues;
+@model List<LookUpValuesByTypeDto>
+@{
+    Layout = null;
+
+   var defaultValue =  ViewBag.defaultValue;
+
+}
+
+@foreach (var entity in Model)
+{
+    if (entity.LOOKUP_CODE == defaultValue)
+    {
+        <option value="@entity.LOOKUP_CODE" d-attibute1="@entity.ATTIBUTE1" d-attibute2="@entity.ATTIBUTE2" d-attibute3="@entity.ATTIBUTE3" d-attibute4="@entity.ATTIBUTE4" d-attibute5="@entity.ATTIBUTE5" d-tag="@entity.TAG" selected="selected">@entity.LOOKUP_MEANING</option>
+    }
+    else
+    {
+     <option  value="@entity.LOOKUP_CODE" d-attibute1="@entity.ATTIBUTE1"  d-attibute2="@entity.ATTIBUTE2"  d-attibute3="@entity.ATTIBUTE3"  d-attibute4="@entity.ATTIBUTE4"  d-attibute5="@entity.ATTIBUTE5" d-tag="@entity.TAG"  >@entity.LOOKUP_MEANING</option>
+    }
+}

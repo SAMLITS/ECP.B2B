@@ -1,0 +1,5 @@
+2017-09-05 11:41:48,000 [2] ERROR ECP.Util.ConfigDc.GrpcServer.Program [(null)] - 出现异常
+System.IO.IOException: Failed to bind port "127.0.0.1:9007"
+   at Grpc.Core.Server.CheckPortsBoundSuccessfully()
+   at Grpc.Core.Server.Start()
+   at ECP.Util.ConfigDc.GrpcServer.Program.Main(String[] args) in D:\工作\Code\Src\B2B\SiteServer\09ConfigDc\ECP.Util.ConfigDc.GrpcServer\Program.cs:line 30

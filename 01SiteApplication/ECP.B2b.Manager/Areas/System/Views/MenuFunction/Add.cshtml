@@ -1,0 +1,42 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity
+@using ECP.Util.HtmlHelper;
+@{
+    Layout = null;
+}
+@Html.Partial("PartialComLayout/_LayoutSingleForm", new SingleFormLayout()
+{
+    FormId = "menuFunction-add-form",
+    IsContentClass = false,
+    colCount = 1,
+    Controls = new List<ExtendSingleFormControl>
+    {
+    new ExtendSingleFormControl("MENU_NAME", "菜单名称" ,ControlType.textbox){  Id="txtAddMENU_NAME",IsDefaultDisabled=true,defaultVal=ViewBag.MENU_NAME },
+    new ExtendSingleFormControl("MENU_ID",ControlType.hidden){ Id="hidAddMENU_ID",IsFixed=true,defaultVal=ViewBag.MENU_ID },
+
+    new ExtendSingleFormControl("FUNCTION_CODE", "功能代码" ,ControlType.textbox){  Id="txtAddFUNCTION_CODE",IsRequired_hint=true },
+
+    new ExtendSingleFormControl("FUNCTION_DESC", "功能说明" ,ControlType.textbox){  Id="txtAddFUNCTION_DESC",IsRequired_hint=true},
+
+    new ExtendSingleFormControl("DEFAULT_ASSIGN","默认分配",ControlType.select)
+    {
+        Id ="selAddDEFAULT_ASSIGN",
+        dataSource = new SelectControlDataSourceSet("YES_NO"),
+        IsRequired_hint=true,
+        defaultVal="N"
+    },
+
+    new ExtendSingleFormControl("REMARK","备注",ControlType.textbox){ Id="txtAddREMARK"},
+    }
+})
+<script>
+    $(function () {
+        //必填初始化
+        $("#menuFunction-add-form").validate({
+            rules: {
+                FUNCTION_CODE: { required: true },
+                FUNCTION_DESC: { required: true },
+                DEFAULT_ASSIGN: { required: true }
+            }
+        });
+    });
+</script>

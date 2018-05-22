@@ -1,0 +1,167 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <MvcRazorCompileOnPublish>true</MvcRazorCompileOnPublish>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <UserSecretsId>aspnet-ECP.B2b.Manager-C9ED5058-ABAC-4A01-888D-DC649DE4B663</UserSecretsId>
+    <PackageTargetFallback>portable-net45+win8</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Areas\System\Views\LookUpValues\List.cshtml" />
+    <Content Remove="Views\Shared\_LayoutMember.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0-preview2-final" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\System\Data\" />
+    <Folder Include="Areas\System\Models\" />
+    <Folder Include="Areas\System\Scripts\" />
+    <Folder Include="Data\" />
+    <Folder Include="Utility\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="cfgFiles\bindAddressServices.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="wwwroot\Scripts\assets\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\Scripts\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\Scripts\assets\js\ace-elements.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\ace-extra.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\ace.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\additional-methods.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\bootbox.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\bootstrap-colorpicker.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\bootstrap-tab.js" />
+    <None Include="wwwroot\Scripts\assets\js\bootstrap-tag.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\bootstrap-wysiwyg.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\bootstrap.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\chosen.jquery.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\date-time\bootstrap-datepicker.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\date-time\bootstrap-timepicker.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\date-time\daterangepicker.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\date-time\moment.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\dropzone.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\excanvas.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\flot\jquery.flot.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\flot\jquery.flot.pie.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\flot\jquery.flot.resize.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\fuelux\data\fuelux.tree-sampledata.js" />
+    <None Include="wwwroot\Scripts\assets\js\fuelux\fuelux.spinner.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\fuelux\fuelux.tree.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\fuelux\fuelux.wizard.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\fullcalendar.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\html5shiv.js" />
+    <None Include="wwwroot\Scripts\assets\js\jqGrid\i18n\grid.locale-en.js" />
+    <None Include="wwwroot\Scripts\assets\js\jqGrid\jquery.jqGrid.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery-1.10.2.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery-2.0.3.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery-ui-1.10.3.custom.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery-ui-1.10.3.full.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.autosize.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.colorbox-min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.dataTables.bootstrap.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.easy-pie-chart.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.gritter.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.hotkeys.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.inputlimiter.1.3.1.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.knob.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.maskedinput.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.mobile.custom.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.nestable.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.slimscroll.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.sparkline.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.ui.touch-punch.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\jquery.validate.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\markdown\bootstrap-markdown.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\markdown\markdown.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\respond.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\select2.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\sidebar-menu.js" />
+    <None Include="wwwroot\Scripts\assets\js\typeahead-bs2.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\x-editable\ace-editable.min.js" />
+    <None Include="wwwroot\Scripts\assets\js\x-editable\bootstrap-editable.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-theme.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\npm.js" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\Scripts\jquery-2.0.3.min.js" />
+    <None Include="wwwroot\Scripts\jquery.validate\jquery.validate-vsdoc.js" />
+    <None Include="wwwroot\Scripts\jquery.validate\jquery.validate.js" />
+    <None Include="wwwroot\Scripts\jquery.validate\jquery.validate.min.js" />
+    <None Include="wwwroot\Scripts\jquery.validate\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\Scripts\jquery.validate\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\Scripts\jquery.validate\messages_zh.min.js" />
+    <None Include="wwwroot\Scripts\layer\font\iconfont.svg" />
+    <None Include="wwwroot\Scripts\layer\layerEx.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\carousel.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\code.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\element.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\flow.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\form.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\jquery.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\laydate.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\layedit.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\layer.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\laypage.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\laytpl.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\mobile.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\table.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\tree.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\upload.js" />
+    <None Include="wwwroot\Scripts\layer\lay\modules\util.js" />
+    <None Include="wwwroot\Scripts\select2\i18n\zh-CN.js" />
+    <None Include="wwwroot\Scripts\select2\select2.full.js" />
+    <None Include="wwwroot\Scripts\select2\select2.full.min.js" />
+    <None Include="wwwroot\Scripts\select2\select2.js" />
+    <None Include="wwwroot\Scripts\select2\select2.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcClient.Interface\ECP.B2b.Main.GrpcClient.Interface.csproj" />
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcProxy\ECP.B2b.Main.GrpcProxy.csproj" />
+    <ProjectReference Include="..\..\05Model\ECP.B2b.ComEntity\ECP.B2b.ComEntity.csproj" />
+    <ProjectReference Include="..\..\08Utility\ECP.B2b.ClientRegisterModuleIoc\ECP.B2b.ClientRegisterModuleIoc.csproj" />
+    <ProjectReference Include="..\..\08Utility\ECP.Util.AutofacIoc\ECP.Util.AutofacIoc.csproj" />
+    <ProjectReference Include="..\..\ECP.Util.HtmlHelper\ECP.Util.HtmlHelper.csproj" />
+    <ProjectReference Include="..\..\ECP.Util.Jwt\ECP.Util.Jwt.csproj" />
+    <ProjectReference Include="..\..\ECP_B2B_API_SDK\ECP_B2B_API_SDK.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Scripts\bootstrap-table\bootstrap-treeview.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\Scripts\bootstrap-table\bootstrap-treeview.min.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JSONSchema="http://json.schemastore.org/commands" /></VisualStudio></ProjectExtensions>
+
+</Project>

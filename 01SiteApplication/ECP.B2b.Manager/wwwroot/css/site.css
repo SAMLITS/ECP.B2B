@@ -1,0 +1,229 @@
+﻿h1 {
+     margin-top: 0px;
+}
+    h1 a,a:hover {
+        color: #fff;
+    }
+.nav a {
+    color: #fff;
+}
+
+.control-label {
+    height: 28px;
+    line-height: 28px;
+    text-align: right;
+}
+
+.col-sm-1 {
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 150px; 
+}
+
+.col-sm-2 {
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 200px; 
+}
+.form-control {
+    width: 200px
+}
+.form-img {
+    width: 200px;
+    height: 200px;
+}
+
+.Wdate {
+    height: 25px;
+    width: 90px;
+    border: 1px solid #ccc;
+}
+.Wdate1 {
+  
+    width: 90px;
+   
+}
+.Wdate2 {
+    width: 200px;
+
+}
+.WdateFrm {
+    width: 200px;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+.ddisabled[readonly] {
+    background-color: #eee;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+.input_parent {
+    position: relative;
+    width: 200px
+}
+.input_child {
+    position: absolute;
+    z-index: 5;
+    right: 0;
+    top: 0;
+}
+.input_cover {
+  
+    cursor: not-allowed;
+    filter: alpha(Opacity=100);
+    -moz-opacity: 0;
+    opacity: 0;
+    top: 0;
+    z-index: 6;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 30px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.fontzhi {
+    /*width: 10%;*/
+    width: 20px;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+    text-align: center
+}
+.wdate_div_width {
+    /*width: 45%;*/
+    width: 90px;
+    float: left
+}
+.panel {
+    margin-bottom: 0px;
+}.panel-body input[type=checkbox] {
+    margin: 0px
+}
+.required-hint {
+    color: red;
+    margin:0px;
+}
+.form-horizontal .control-label {
+    padding-top: 0px;
+    
+}
+
+.url-width {
+    width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+    .url-width a {
+        color: blue
+    }
+        .url-width a:hover {
+            color: blue
+        }
+/* Hide/rearrange for smaller screens  下面是针对移动端的样式，PC端样式写在上面 */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+
+/* 页面按钮区域  */
+.btnModalLayout
+{
+    text-align:center;
+}
+
+
+/*bootstrap table 宽度设置*/
+.table {
+    table-layout: fixed;
+}
+/*bootstrap table 列 ... 设置*/
+.tableColumnLeaveOut {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+/*layer 样式重写*/
+.layui-layer-lan .layui-layer-btn .layui-layer-btn1 {
+    border-color: #2e6da4;
+    background-color: #337ab7;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius:4px;
+}
+
+.layui-layer-lan .layui-layer-btn .layui-layer-btn10 {
+    border-color: #2e6da4;
+    background-color: #337ab7;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+}
+
+.layui-layer-lan .layui-layer-btn a {
+    border-color: #2e6da4;
+    background: #337ab7;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    border-radius: 4px;
+    height: 30px;
+    line-height: 20px;
+    padding: 4px 10px
+}
+
+    .layui-layer-lan .layui-layer-btn a[disabled] {
+        background-color: #eee;
+        border-color: #eee;
+        color: #808080;
+        opacity: 1;
+        cursor: not-allowed;
+        border-radius: 4px;
+    }
+
+
+
+
+
+
+
+/*layer tips 样式重写*/
+.layui-layer-tips .layui-layer-content {
+    line-height: 18px;
+    padding:5px 10px;
+}
+
+
+.sidebar {
+    width: 190px;
+    float: left;
+    position: relative;
+    border: 1px solid #ccc;
+    border-width: 0 1px 0 0;
+    background-color: #f2f2f2;
+    overflow-y: scroll;
+}

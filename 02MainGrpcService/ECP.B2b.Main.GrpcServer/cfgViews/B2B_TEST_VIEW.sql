@@ -1,0 +1,1 @@
+﻿SELECT * FROM B2B_EB_INV

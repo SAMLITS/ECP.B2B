@@ -1,0 +1,59 @@
+﻿@using ECP.B2b.ModelDto.System.Menu;
+@model List<UserMenuResGroupDto>
+@{
+    Layout = null;
+
+    List<UserMenuResGroupDto> MenuList = (List<UserMenuResGroupDto>)ViewBag.MenuList;
+
+    //var currentPath = this.Context.Request.Path;
+
+ 
+}
+
+
+ $('#menu').sidebarMenu({
+        data: [
+        @foreach (var item in MenuList)
+            {
+                <text>
+                {
+                    id: @item.mainUserMenu.ID,
+                    text: "@item.mainUserMenu.MENU_NAME",
+                    icon: "glyphicon glyphicon-@item.mainUserMenu.IMAGEURL",
+                    url: '@item.mainUserMenu.MENU_URL',
+                    menus: [
+                                @foreach (var subItem in item.subUserMenus)
+                                {
+
+                                    <text>
+                                    {
+                                        id: @subItem.ID,
+                                        text: "@subItem.MENU_NAME",
+                                        icon: 'glyphicon glyphicon-@subItem.IMAGEURL',
+                                        url: '@subItem.MENU_URL'
+                                    },
+                                    </text>
+                                }
+                            ]
+                                                
+                },
+                </text>
+            } 
+        ]
+    });
+
+@*<a href="#" class="visible-phone"><i class="icon icon-th"></i>&nbsp;B2B菜单</a>
+<ul>
+    @foreach (var item in MenuList)
+    {
+        <li class="submenu @if (item.subUserMenus.Count(sm => sm.MENU_URL == currentPath) > 0) { <text>open</text>  }"    >
+            <a href="#"><i class="glyphicon glyphicon-@item.mainUserMenu.IMAGEURL"></i> <span>@item.mainUserMenu.MENU_NAME</span></a>
+            <ul>
+                @foreach (var subItem in item.subUserMenus)
+                {
+                    <li @if (subItem.MENU_URL == currentPath) {<text>class="active"</text>  }   ><a href="@subItem.MENU_URL"><i class="glyphicon glyphicon-@subItem.IMAGEURL"></i>@subItem.MENU_NAME</a></li>
+                }
+            </ul>
+        </li>
+    }
+</ul>*@

@@ -1,0 +1,160 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity
+@model ECP.Util.HtmlHelper.PartialExtend.Entity.ListLayout
+@{
+    Layout = null;
+    //List 界面 
+}
+
+@if(Model.IsContentClass)
+{
+    @Html.Raw("<div id='content'>");
+}
+else
+{
+    @Html.Raw("<div>");
+}
+
+
+    <form id="@Model.FormId">
+        @foreach (var entity in Model.Controls.Where(c => c != null && c.IsFixed))
+        {
+            if (entity.controlType == ControlType.hidden)
+            {
+                <input type="hidden" name="@entity.Name" value="@entity.defaultVal"  l_data_format="@entity.controlDataFormatter"  id="@entity.Id"  @if (entity.IsDefaultDisabled) { <text>disabled</text>}/>
+            }
+        }
+
+        @if (Model.IsShowQueryLayout) { 
+
+           <div class="panel panel-default">
+            <div class="panel-heading">
+                查询条件：
+            </div>
+            <div class="panel-body">
+                <table class="form-group">
+                    @{
+                        var controls = Model.Controls.Where(c => c != null && !c.IsFixed);
+                        var index = 0;
+
+                        List<ExtendQueryFormControl> stControls;
+                        while ((stControls = controls.Skip(index * Model.colCount).Take(Model.colCount).ToList()).Count > 0)
+                        {
+                            var totalColspanCount = 0;
+
+                            <tr>
+                                @foreach (var entity in stControls)
+                                {
+                                    totalColspanCount += entity.colspanCount + 1;
+                                    if (totalColspanCount > Model.colCount * 2)
+                                    {
+                                        break;
+                                    }
+
+                                    <td>@if (entity.IsRequired_hint)
+                                    {
+                                        <label class="required-hint"  id="lblQueryRequired_@entity.Name">*</label>
+                                    }
+                                    @entity.title ：</td>
+                                    <td colspan="@entity.colspanCount">
+                                        @if (entity.IsLike||entity.IsPersonDisabled)
+                                        {
+                                            @Html.Raw("<div class='input_parent'>");
+                                        }
+
+
+                                        @if (entity.controlType == ControlType.hidden)
+                                        {
+                                            <input type="hidden" name="@entity.Name" l_data_format="@entity.controlDataFormatter" value="@entity.defaultVal" id="@entity.Id"  @if (entity.IsDefaultDisabled) { <text>disabled</text>}/>
+                                        }
+                                        else if (entity.controlType == ControlType.textbox)
+                                        {
+                                            <input class="form-control" type="text"  name="@entity.Name"  l_data_format="@entity.controlDataFormatter"  value="@entity.defaultVal" id="@entity.Id"  @if (entity.IsDefaultDisabled) { <text>disabled</text>}/>
+                                        }
+                                        else if (entity.controlType == ControlType.select)
+                                        {
+                                            @Html.Partial("PartialComLayout/_LayoutControlSelect", entity.GetExtendSelectControl(true));
+                                        }
+                                        else if (entity.controlType == ControlType.datetime)
+                                        {
+                                            <input class="Wdate Wdate2 form-control " type="text" onclick="WdatePicker()" name="@entity.Name" id="@entity.Id" value="@entity.defaultVal"  @if (entity.IsDefaultDisabled) { <text>disabled</text>}/>
+
+                                        }
+                                        else if (entity.controlType == ControlType.datetimebet)
+                                        {
+                                            @Html.Partial("PartialComLayout/Controls/DateTimeBet", entity.GetExtendDateTimeControls());
+                                        }
+                                        else if (entity.controlType == ControlType.parialcontrol)
+                                        {
+                                            @Html.Partial(entity.PartialViewName, entity.PartialViewData);
+                                        }
+                                        else if (entity.controlType == ControlType.viewcomponent)
+                                        {
+                                            @await Component.InvokeAsync(entity.ViewComponentName, entity.ViewComponentData);
+                                        }
+                                        else if (entity.controlType == ControlType.textarea)
+                                        {
+                                            <textarea class="form-control" name="@entity.Name" id="@entity.Id" rows="3"   @if (entity.IsDefaultDisabled) { <text>disabled</text>}>@entity.defaultVal</textarea>
+                                        }
+                                        else if (entity.controlType == ControlType.address)
+                                        {
+                                            @Html.Partial("PartialComLayout/Controls/Address/_LayoutAddress");
+                                        }
+
+
+                                        @if (entity.IsLike || entity.IsPersonDisabled)
+                                        {
+                                            if (entity.IsLike)
+                                            {
+                                                string name = "IS_LIKE_" + entity.Name;
+                                            <div class="input_child">
+                                                <input type="checkbox" checked="checked" name="@name" value="true" class="input_check" />
+                                            </div>
+                                            }
+
+                                            @Html.Raw("</div>");
+                                        }
+                                    </td>
+
+
+                                    Model.Controls.Remove(entity);
+                                }
+                            </tr>
+
+                            //index++;
+                        }
+                    }
+                </table>
+                <div style="text-align: center;">
+                    <button type="button" id="@Model.BtnSearchId" class="btn btn-primary glyphicon glyphicon-search"> 查 询</button>
+                </div>
+            </div>
+        </div>
+
+        }
+    </form>
+
+
+@Html.Partial("PartialComLayout/_LayoutControlTable", Model.tableEntity)
+    
+    <div id="@Model.contentModalLayoutId"></div>
+</div>
+
+<script>
+    $(function ()
+    {
+        //$(".form-group").find("td").find("input,select,textarea").css("width", "100%");
+
+        $("#@Model.BtnSearchId").click(function () {
+            if (onSearchBefore_@Model.BtnSearchId ()) {
+                //为了点击查询时回到第一页  设置url参数即可
+                var url = $("#@Model.tableEntity.listdgId").bootstrapTable("getOptions")["url"];
+                $("#@Model.tableEntity.listdgId").bootstrapTable('refresh', { url: url });
+            }
+        });
+    })
+
+    function onSearchBefore_@Model.BtnSearchId ()
+    {
+        return true;
+     }
+</script>

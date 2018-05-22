@@ -1,0 +1,15 @@
+2018-02-05 11:06:50,224 [19] ERROR ECP.B2b.Manager.Controllers.AdminController [(null)] - 登录授权错误！
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ECP.Util.Common.HttpClientHelper`1.SendPostSync(T jo, String url, Action`1 successCallback) in D:\lidaiyi\Src\Company\B2B\SiteServer\08Utility\ECP.Util.Common\HttpClientHelper.cs:line 78
+   at ECP.B2b.Manager.Controllers.AdminController.Login(String USER, String PASSWORD, String CheckCode) in D:\lidaiyi\Src\Company\B2B\SiteServer\01SiteApplication\ECP.B2b.Manager\Controllers\AdminController.cs:line 75
+2018-02-05 16:10:27,475 [78] DEBUG ECP.Util.HtmlHelper.UserManage [(null)] - 用户id=4 Name=admin 退出系统
+2018-02-05 16:13:19,843 [124] DEBUG ECP.Util.HtmlHelper.UserManage [(null)] - 用户id=4 Name=admin 退出系统
+2018-02-05 16:16:25,379 [342] DEBUG ECP.Util.HtmlHelper.UserManage [(null)] - 用户id=161 Name=FINADMIN 退出系统
+2018-02-05 16:17:57,873 [429] DEBUG ECP.Util.HtmlHelper.UserManage [(null)] - 用户id=4 Name=admin 退出系统
+2018-02-05 16:18:29,948 [468] DEBUG ECP.Util.HtmlHelper.UserManage [(null)] - 用户id=161 Name=FINADMIN 退出系统
+2018-02-08 17:24:50,263 [6] ERROR ECP.B2b.Manager.Controllers.AdminController [(null)] - 登录授权错误！
+System.Net.WebException: The remote server returned an error: (500) Internal Server Error.
+   at System.Net.HttpWebRequest.GetResponse()
+   at ECP.Util.Common.HttpClientHelper`1.SendPostSync(T jo, String url, Action`1 successCallback) in D:\lidaiyi\Src\Company\B2B\SiteServer\08Utility\ECP.Util.Common\HttpClientHelper.cs:line 78
+   at ECP.B2b.Manager.Controllers.AdminController.Login(String USER, String PASSWORD, String CheckCode) in D:\lidaiyi\Src\Company\B2B\SiteServer\01SiteApplication\ECP.B2b.Manager\Controllers\AdminController.cs:line 75

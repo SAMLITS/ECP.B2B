@@ -1,0 +1,6 @@
+﻿syntax ="proto3"; 
+package ECP.B2b.Main.GrpcProxy.ProtoProxy;  
+ 
+message RemoveIdModel {
+	int32 Id=1;
+}

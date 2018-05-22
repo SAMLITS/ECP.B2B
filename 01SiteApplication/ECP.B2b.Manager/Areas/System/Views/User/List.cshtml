@@ -1,0 +1,47 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@using ECP.Util.HtmlHelper;
+@{
+    var currentUser = Context.GetCurrentUser();
+}
+
+@Html.Partial("PartialComLayout/_LayoutList", new ListLayout()
+{
+    Controls = new List<ExtendQueryFormControl>
+    {
+          new ExtendQueryFormControl("PARTY_NAME", "交易方名称" ,ControlType.textbox)
+          {
+              IsLike =(currentUser.PARTY_TYPE != "FIN"),
+              Id ="txtPARTY_NAME",
+              IsDefaultDisabled =(currentUser.PARTY_TYPE == "FIN"),
+              defaultVal =(currentUser.PARTY_TYPE == "FIN"?currentUser.PartyEntity.PARTY_NAME:string.Empty)
+           },
+          (
+          currentUser.PARTY_TYPE == "FIN"?//金融方用户此处为【是否主账号】下拉框,否则为交易方类型下拉框
+          new ExtendQueryFormControl ("IS_MAIN","是否主帐号", ControlType.select ){Id="selIS_MAIN",dataSource = new SelectControlDataSourceSet("YES_NO")}
+          :
+          new ExtendQueryFormControl ("PARTY_TYPE","交易方类型", ControlType.select ){Id="selPARTY_TYPE",dataSource = new SelectControlDataSourceSet("PARTY_TYPE")}
+          ),
+          new ExtendQueryFormControl("REG_STATUS","注册状态",ControlType.select){Id="selREG_STATUS",dataSource = new SelectControlDataSourceSet("REG_STATUS")},
+          new ExtendQueryFormControl("USER_NAME", "真实姓名" ,ControlType.textbox){ IsLike=true, Id="txtUSER_NAME" },
+          new ExtendQueryFormControl("USER", "用户账号" ,ControlType.textbox){ IsLike=true, Id="txtUSER" },
+          new ExtendQueryFormControl( "创建日期" ,ControlType.datetimebet,new  List<DateTimeControlFormProperGroup>
+             {
+                  new DateTimeControlFormProperGroup{ formControl = new FormControl{ Id = "txtSTART_DATE", Name="START_DATE" } },
+                  new DateTimeControlFormProperGroup{ formControl = new FormControl{ Id = "txtEND_DATE", Name="END_DATE" } }
+             }),
+    },
+    tableEntity = new TableEntity
+    {
+        tableActionButtonControls = new List<ActionButtonControl>
+        {
+            new ActionButtonControl("btnModify","查看/编辑", BtnType.Modify),
+            new ActionButtonControl( BtnType.Delete),
+            new ActionButtonControl( "btnAuthority","菜单分配",BtnType.User),
+            new ActionButtonControl( "btnFunction","功能分配",BtnType.User),
+        }
+    }
+})
+<script>
+    var currentUserPartyId=@currentUser.PARTY_ID;
+</script>
+<script src="~/Scripts/AreasJs/System/User/List.js"></script>

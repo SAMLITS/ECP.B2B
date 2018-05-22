@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="Grpc" Version="1.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\ECP.Util.ConfigDc.Helper\ECP.Util.ConfigDc.Helper.csproj" />
+    <ProjectReference Include="..\ECP.Util.ConfigDc.GrpcProxy\ECP.Util.ConfigDc.GrpcProxy.csproj" />
+  </ItemGroup>
+
+</Project>

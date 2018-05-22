@@ -1,0 +1,53 @@
+/* CSS Document */
+
+/*jquery-ui-bootstrap tabs*/
+.tabs ul {
+/* border-bottom: 3px solid #39aef5!important;*/
+}
+.tabs ul li:not(:first-child){
+padding-right:15px!important;
+  
+}
+.tabs ul li{
+border-top:1px solid #ccc!important;
+border-left:1px solid #ccc!important;
+/*border-bottom: 1px solid #39aef5!important;*/
+}
+.tabs ul li a{
+color:#666!important;
+}
+.tabs ul li span:hover{
+color:#C61010!important;
+}
+.tabs ul li a:hover,
+.tabs ul li:hover,
+.tabs ul li:focus{
+border-bottom: 0!important;
+}
+.tabs ul li:last-child{
+border-right:1px solid #ccc!important;
+}
+.tabs ul li.ui-state-active.ui-tabs-active a,
+.tabs ul li.ui-state-active.ui-tabs-active span,
+.tabs ul li.ui-state-active.ui-tabs-active{
+    /*border-top:3px solid red!important;*/
+    background: #39aef5!important;
+    border-bottom: 2px solid #39aef5!important;
+    color:#ddd!important;
+}
+.tabs ul li.ui-state-active.ui-tabs-active a:hover,
+.tabs ul li.ui-state-active.ui-tabs-active span:hover
+{
+    color:#fff!important;
+}
+.tabs ul li .fa-times-circle{
+position: absolute;
+top: 10px;
+right:18px;
+}
+
+#tabsMenu {
+    left: 220px;
+    top: 50px;
+    z-index: 21;
+}

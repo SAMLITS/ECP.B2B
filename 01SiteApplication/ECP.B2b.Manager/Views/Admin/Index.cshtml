@@ -1,0 +1,353 @@
+﻿@using ECP.Util.HtmlHelper;
+@{
+    Layout = null;
+    ECP.B2b.ComEntity.CurrentUser.CurrentUserEntity currentUser = this.Context.GetCurrentUser();
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ECP.B2b.Manager</title>
+
+    <environment include="Development">
+    </environment>
+     
+    <link href="~/css/bootstrap.min.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+    @*<link href="~/css/matrix-style.css" rel="stylesheet" />
+        <link href="~/css/matrix-media.css" rel="stylesheet" />*@
+    <link href="~/font-awesome/css/font-awesome.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Scripts/assets/css/ace.min.css?v=@AppContextConfigInfo.Version" />
+    <link rel="stylesheet" href="~/Scripts/assets/css/ace-rtl.min.css?v=@AppContextConfigInfo.Version" />
+    <link rel="stylesheet" href="~/Scripts/assets/css/ace-skins.min.css?v=@AppContextConfigInfo.Version" />
+    <script src="~/Scripts/assets/js/ace-extra.min.js?v=@AppContextConfigInfo.Version"></script>
+
+
+    <link href="~/Scripts/bootstrap-table/bootstrap-table.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+    <script src='~/Scripts/assets/js/jquery-2.0.3.min.js?v=@AppContextConfigInfo.Version'></script>
+    @*<script src="~/Scripts/jquery-1.10.2.js"></script>
+
+
+
+        <script src="~/Scripts/jquery.min.js"></script>*@
+    <script src="~/Scripts/assets/js/sidebar-menu.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/assets/js/bootstrap-tab.js?v=@AppContextConfigInfo.Version"></script>
+
+    <script src="~/Scripts/assets/js/bootstrap.min.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/assets/js/typeahead-bs2.min.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/bootstrap-table/bootstrap-table.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/bootstrap-table/bootstrap-table-zh-CN.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/My97DatePicker/WdatePicker.js?v=@AppContextConfigInfo.Version"></script>
+
+    <script src="~/Scripts/jquery.validate/jquery.validate.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/jquery.validate/messages_zh.min.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqValidateExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/jquery.validate/SetValidateDefault.js?v=@AppContextConfigInfo.Version"></script>
+
+    @*<script src="~/Scripts/bootstrap.min.js"></script>*@
+    @*<script src="~/Scripts/matrix/matrix.js"></script>*@
+    <script src="~/Scripts/layer/layui.all.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/layer/layerEx.js?v=@AppContextConfigInfo.Version"></script>
+
+    <link href="~/css/site.css?v=@AppContextConfigInfo.Version" rel="stylesheet" />
+
+    <script src="~/Scripts/com/JSerializeExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/J_DataHelperCommon.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqueryExtend.js?v=@AppContextConfigInfo.Version"></script>
+    <script src="~/Scripts/com/JqMessageExtend.js?v=@AppContextConfigInfo.Version"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            _padding: 100px 0;
+            padding:0px;
+        }
+        .col-xs-12 {
+            color: #666;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar navbar-default" id="navbar">
+        <script type="text/javascript">
+            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
+        </script>
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="#" class="navbar-brand">
+                    <small>
+                        <i class="icon-cogs"></i>
+                        ECP-B2B管理系统
+                    </small>
+                </a><!-- /.brand -->
+                <div style="float:left;margin:10px;color:white">@AppContextConfigInfo.Version</div>
+
+                <span> &nbsp; &nbsp;&nbsp; &nbsp;</span>
+                
+                    <div style="float:left;margin:10px;color:white">
+                        <a target="_blank" style="color:white" href="/System/User/OpenRedirectEcp">切换至EBS系统</a>
+                    </div>
+                 
+            </div><!-- /.navbar-header -->
+
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+
+                    <li class="light-blue">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="~/Scripts/assets/avatars/user.jpg" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>欢迎光临,</small>
+                                @currentUser.USER
+                            </span>
+
+                            <i class="icon-caret-down"></i>
+                        </a>
+
+                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-cog"></i>
+                                    设置
+                                </a>
+                            </li>
+
+                            <li class="divider"></li>
+
+                            <li>
+                                <a href="/Admin/Logout">
+                                    <i class="icon-off"></i>
+                                    退出
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+
+    <content class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="main-container-inner">
+            <a class="menu-toggler" id="menu-toggler" href="#">
+                <span class="menu-text"></span>
+            </a>
+
+            <div class="sidebar" id="sidebar">
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+                </script>
+
+                <ul class="nav nav-list" id="menu"></ul><!-- /.nav-list -->
+
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+                </div>
+
+                <script type="text/javascript">
+                    try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+                </script>
+            </div>
+
+            <div class="main-content">
+
+
+                <div class="page-content">
+
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+
+                            <ul class="nav nav-tabs" role="tablist">
+                                <!--<li class="active"><a href="#Index" role="tab" data-toggle="tab">首页</a></li>-->
+                            </ul>
+                            <div class="tab-content">
+                                <!--<div role="tabpanel" class="tab-pane active" id="Index"></div>-->
+                                @*<div role="tabpanel" class="tab-pane active" id="Index"></div>*@
+                                @*@RenderBody()*@
+                            </div>
+
+
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div><!-- /.main-content -->
+
+        </div>
+
+    </content>
+
+    @*<footer>
+            <p>&copy; 2017 - ECP.B2b.Manager</p>
+        </footer>*@
+
+
+    <!-- 自定义js -->
+    <!-- page specific plugin scripts -->
+
+
+    <script src="~/Scripts/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="~/Scripts/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Scripts/assets/js/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/assets/js/jquery.easy-pie-chart.min.js"></script>
+    <script src="~/Scripts/assets/js/jquery.sparkline.min.js"></script>
+    <script src="~/Scripts/assets/js/flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/assets/js/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Scripts/assets/js/flot/jquery.flot.resize.min.js"></script>
+
+    <!-- ace scripts -->
+
+    <script src="~/Scripts/assets/js/ace-elements.min.js"></script>
+    <script src="~/Scripts/assets/js/ace.min.js"></script>
+
+    <script type="text/javascript">
+                    $(window).resize(function () {
+                        $("#sidebar").height($(window).height() - $("#navbar").height());
+                        $("div .tab-pane iframe").height($("#sidebar").height() - 60);
+                    });
+
+                    $(function () {
+                        $("#sidebar").height($(window).height() - $("#navbar").height() - 40);
+
+
+                         @await Component.InvokeAsync("MenuNavigation")
+
+                        //$('#menu').sidebarMenu({
+                        //    data: [
+
+                        //         {
+                        //        id: '1',
+                        //        text: 'sys系统设置',
+                        //        icon: 'icon-cog',
+                        //        url: '',
+                        //        menus: [{
+                        //            id: '11',
+                        //            text: '表单示例',
+                        //            icon: 'icon-glass',
+                        //            url: 'tables.html'
+                        //        }]
+                        //    }, {
+                        //        id: '2',
+                        //        text: 'SYS基础设置',
+                        //        icon: 'icon-leaf',
+                        //        url: '',
+                        //        menus: [{
+                        //            id: '21',
+                        //            text: 'SYS交易方注册',
+                        //            icon: 'icon-glass',
+                        //            url: '/Basic/Party/List'
+                        //        }, {
+                        //            id: '22',
+                        //            text: 'treeview',
+                        //            icon: 'icon-glass',
+                        //            url: 'treeview.html'
+                        //        }, {
+                        //            id: '23',
+                        //            text: '物料维护',
+                        //            icon: 'icon-glass',
+                        //            url: '/Model/Index'
+                        //        }, {
+                        //            id: '24',
+                        //            text: '站点管理',
+                        //            icon: 'icon-glass',
+                        //            url: '/Station/Index'
+                        //        }]
+                        //    }, {
+                        //        id: '3',
+                        //        text: '权限管理',
+                        //        icon: 'icon-user',
+                        //        url: '',
+                        //        menus: [{
+                        //            id: '31',
+                        //            text: '用户管理',
+                        //            icon: 'icon-user',
+                        //            url: '/SystemSetting/User'
+                        //        }, {
+                        //            id: '32',
+                        //            text: '角色管理',
+                        //            icon: 'icon-apple',
+                        //            url: '/SystemSetting/Role'
+                        //        }, {
+                        //            id: '33',
+                        //            text: '菜单管理',
+                        //            icon: 'icon-list',
+                        //            url: '/SystemSetting/Menu'
+                        //        }, {
+                        //            id: '34',
+                        //            text: '部门管理',
+                        //            icon: 'icon-glass',
+                        //            url: '/SystemSetting/Department'
+                        //        }]
+                        //    }, {
+                        //        id: '4',
+                        //        text: '订单管理',
+                        //        icon: 'icon-envelope',
+                        //        url: '',
+                        //        menus: [{
+                        //            id: '41',
+                        //            text: '订单查询',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/Query'
+                        //        }, {
+                        //            id: '42',
+                        //            text: '订单排产',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/PLANTPRODUCT'
+                        //        }, {
+                        //            id: '43',
+                        //            text: '订单撤排',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/cancelPRODUCT'
+                        //        }, {
+                        //            id: '44',
+                        //            text: '订单HOLD',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/hold'
+                        //        }, {
+                        //            id: '45',
+                        //            text: '订单删除',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/delete'
+                        //        }, {
+                        //            id: '47',
+                        //            text: '订单插单',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/insertorder'
+                        //        }, {
+                        //            id: '48',
+                        //            text: '订单导入',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/Import'
+                        //        }, {
+                        //            id: '47',
+                        //            text: '订单插单',
+                        //            icon: 'icon-glass',
+                        //            url: '/Order/insertorder'
+                        //        }]
+                        //    }]
+                        //});
+
+                        eval($("#menu_li_00 a").attr("href"));
+                    });
+
+    </script>
+
+    <script src="~/Scripts/com/J_TableFormStyle.js"></script>
+
+</body>
+</html>

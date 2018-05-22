@@ -1,0 +1,54 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+     Layout = null;
+}
+
+
+@Html.Partial("PartialComLayout/_LayoutList", new ListLayout()
+{
+    IsContentClass = false,
+    Controls = new List<ExtendQueryFormControl>
+    {
+          new ExtendQueryFormControl("MAIN_MENU_ID",ControlType.hidden){ IsFixed=true  },
+          new ExtendQueryFormControl("MENU_TYPE",ControlType.hidden)   {  defaultVal = "S" , IsFixed=true },
+
+          new ExtendQueryFormControl("MENU_CODE", "子菜单代码" ,ControlType.textbox){ IsLike=true },
+          new ExtendQueryFormControl("MENU_NAME", "子菜单名称" ,ControlType.textbox){ IsLike=true },
+
+          new ExtendQueryFormControl ("MENU_SORT","菜单种类", ControlType.select )
+          {
+              dataSource = new SelectControlDataSourceSet("MENU_SORT")
+          },
+
+          new ExtendQueryFormControl("TERMINAL_TYPE","适用终端类别",ControlType.select)
+          {
+              dataSource = new SelectControlDataSourceSet("TERMINAL_TYPE")
+          },
+
+          new ExtendQueryFormControl("IS_AVAILABLE","是否有效",ControlType.select)
+          {
+              dataSource = new SelectControlDataSourceSet("YES_NO")
+          },
+
+          new ExtendQueryFormControl("MAIN_MENU_NAME", "主菜单" ,ControlType.textbox){IsDefaultDisabled=true }
+    },
+    FormId = "subfrmQueryWhere",
+    BtnSearchId = "btn_query_sub",
+
+    tableEntity = new TableEntity
+    {
+        ToolbarId = "toolbar_sub",
+        tableActionButtonControls = new List<ActionButtonControl>
+        {
+             new ActionButtonControl{ btnType = BtnType.Add, Id = "btnAdd_sub" },
+             new ActionButtonControl{ btnType = BtnType.Modify, Id = "btnModify_sub" },
+             new ActionButtonControl{ btnType = BtnType.Modify, Id = "btnMenuFunction",Title="菜单功能" },
+             new ActionButtonControl{ btnType = BtnType.Delete, Id = "btnDelete_sub" }
+        },
+        listdgId = "listdg_sub",
+    },
+    contentModalLayoutId = "contentModalLayout_sub"
+})
+  
+<script src="~/Scripts/AreasJs/System/Menu/SubList.js?v=@ECP.B2b.Manager.Models.AppContextConfigInfo.Version"></script> 
+

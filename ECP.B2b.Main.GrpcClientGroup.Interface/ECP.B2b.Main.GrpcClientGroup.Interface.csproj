@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\02MainGrpcService\ECP.B2b.Main.GrpcProxy\ECP.B2b.Main.GrpcProxy.csproj" />
+    <ProjectReference Include="..\05Model\ECP.B2b.ComEntity\ECP.B2b.ComEntity.csproj" />
+    <ProjectReference Include="..\05Model\ECP.B2b.DbModel\ECP.B2b.DbModel.csproj" />
+    <ProjectReference Include="..\05Model\ECP.B2b.ModelDto\ECP.B2b.ModelDto.csproj" />
+    <ProjectReference Include="..\08Utility\ECP.Util.Common\ECP.Util.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+
+</Project>

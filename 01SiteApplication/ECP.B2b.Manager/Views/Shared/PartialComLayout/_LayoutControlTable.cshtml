@@ -1,0 +1,22 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@model ECP.Util.HtmlHelper.PartialExtend.Entity.TableEntity
+@{
+    //码表显示
+    Layout = null;
+}
+
+@if (Model != null)
+{
+    <div class="widget-box">
+        <div class="widget-content nopadding table-responsive">
+            <div id="@Model.ToolbarId">
+                @foreach (ActionButtonControl entity in Model.tableActionButtonControls)
+                {
+                    @Html.Raw(entity.CreateBtn() + " ");
+                }
+            </div>
+            <table id="@Model.listdgId" class="table table-bordered table-striped"></table>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+}

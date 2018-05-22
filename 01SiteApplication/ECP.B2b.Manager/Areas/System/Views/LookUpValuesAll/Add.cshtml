@@ -1,0 +1,52 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<form class="form-horizontal" id="lookUpValuesAll-add-form">
+    <div class="panel-body">
+        <table class="form-group">
+            @* 码表代码 *@
+            <tr>
+                <td for="tdLOOKUP_TYPE"><label class="required-hint">*</label>码表代码：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="LOOKUP_TYPE" id="txtLOOKUP_TYPE"/>
+                    </div>
+                </td>
+            </tr>
+
+            @* 码表名称 *@
+            <tr>
+                <td for="tdLOOKUP_TYPE_NAME"><label class="required-hint">*</label>码表名称：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="LOOKUP_TYPE_NAME" id="txtLOOKUP_TYPE_NAME" />
+                    </div>
+                </td>
+            </tr>
+
+            @* 说明 *@
+            <tr>
+                <td for="tdLOOKUP_DESCRIPTION ">说明：</td>
+                <td>
+                    <div class="input_parent">
+                        <input class="form-control" type="text" name="LOOKUP_DESCRIPTION" id="txtLOOKUP_DESCRIPTION" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#lookUpValuesAll-add-form').validate({
+            rules: {
+                LOOKUP_TYPE: { required: true },
+                LOOKUP_TYPE_NAME: { required: true },
+            }
+        });
+    });
+</script>

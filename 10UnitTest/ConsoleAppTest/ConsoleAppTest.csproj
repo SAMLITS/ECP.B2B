@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.3.0" />
+    <PackageReference Include="Grpc" Version="1.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcClient.Interface\ECP.B2b.Main.GrpcClient.Interface.csproj" />
+    <ProjectReference Include="..\..\02MainGrpcService\ECP.B2b.Main.GrpcClient\ECP.B2b.Main.GrpcClient.csproj" />
+    <ProjectReference Include="..\..\09ConfigDc\ECP.Util.ConfigDc.GrpcClient\ECP.Util.ConfigDc.GrpcClient.csproj" />
+    <ProjectReference Include="..\..\09ConfigDc\ECP.Util.ConfigDc.GrpcProxy\ECP.Util.ConfigDc.GrpcProxy.csproj" />
+    <ProjectReference Include="..\..\ECP.B2b.Main.GrpcClientGroup.Interface\ECP.B2b.Main.GrpcClientGroup.Interface.csproj" />
+    <ProjectReference Include="..\..\ECP.B2b.Main.GrpcClientGroup\ECP.B2b.Main.GrpcClientGroup.csproj" />
+  </ItemGroup>
+
+</Project>

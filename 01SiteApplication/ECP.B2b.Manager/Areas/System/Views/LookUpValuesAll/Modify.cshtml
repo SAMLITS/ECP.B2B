@@ -1,0 +1,50 @@
+﻿<div id="content">
+    <form class="form-horizontal" id="lookUpValuesAll-modify-form">
+        <input type="hidden" id="hidID" name="ID" value="@ViewBag.ID" />
+        <div class="panel-body">
+            <table class="form-group">
+                <tr>
+                    <td for="tdLOOKUP_TYPE">码表代码：</td>
+                    <td>
+                        <div class="input_parent">
+                            <input class="form-control" type="text" name="LOOKUP_TYPE" id="txtLOOKUP_TYPE" disabled="disabled"/>
+                        </div>
+                    </td>
+                    <td for="tdLOOKUP_TYPE_NAME"><label class="required-hint">*</label>码表名称：</td>
+                    <td>
+                        <div class="input_parent">
+                            <input class="form-control" type="text" name="LOOKUP_TYPE_NAME" id="txtLOOKUP_TYPE_NAME" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td for="tdLOOKUP_DESCRIPTION">说明：</td>
+                    <td colspan="3" class="col-sm-2">
+                        <input class="form-control" type="text" name="LOOKUP_DESCRIPTION" id="txtLOOKUP_DESCRIPTION" style="width:945px" />
+                    </td>
+                </tr>
+            </table>
+            <div style="text-align: center;">
+                <button type="button" id="btn_save" class="btn btn-primary" style="margin-right:20px">保存</button>
+                <button type="button" id="btn_back" class="btn btn-primary">返回</button>
+            </div>
+        </div>
+    </form>
+
+    <form id="frmQueryWhere">
+    <input type="hidden" id="hidLOOKUP_VALUES_ALL_ID" name="LOOKUP_VALUES_ALL_ID" value="@ViewBag.ID"/>
+    </form>
+    <div class="widget-box">
+        <div class="widget-content nopadding table-responsive">
+            <div id="toolbar">
+                <a id="btnAdd" aria-hidden="true" class="btn btn-primary glyphicon glyphicon-plus">新增</a>
+                <a id="btnModify" class="btn btn-primary glyphicon glyphicon-pencil" aria-hidden="true">编辑</a>
+                <a id="btnDelete" aria-hidden="true" class="btn btn-danger glyphicon glyphicon-remove">删除</a>
+            </div>
+            <table id="subListGrid" class="table table-bordered table-striped"></table>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<div id="subContentModalLayout"></div>
+<script src="~/Scripts/AreasJs/System/LookUpValuesAll/Modify.js"></script>

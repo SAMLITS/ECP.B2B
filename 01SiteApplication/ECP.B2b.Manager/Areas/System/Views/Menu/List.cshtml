@@ -1,0 +1,11 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@{
+
+}
+
+@Html.Partial("PartialComLayout/_LayoutPartialTabs",new List<PartialTabsEentity>
+{
+    new PartialTabsEentity("主菜单","PartialLayout/MainList"),
+    new PartialTabsEentity("子菜单","PartialLayout/SubList"),
+})
+

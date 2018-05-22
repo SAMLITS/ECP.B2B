@@ -1,0 +1,79 @@
+﻿@using ECP.Util.HtmlHelper.PartialExtend.Entity;
+@model  ECP.Util.HtmlHelper.PartialExtend.Entity.SingleTabsEntity 
+@{
+    Layout = null;
+    //多个选项卡 共用 页面
+}
+
+
+<div id="content">
+
+    @if (Model.IsShowForm)
+    {
+        @Html.Raw($"<form class='form-horizontal' id='{Model.FormId}'>");
+    }
+
+    <ul id="myTab" class="nav nav-tabs">
+        @for (int i = 0; i < Model.TabsSingleColl.Count; i++)
+        {
+            string id = "#navTab"+i;
+            if (i == 0)
+            { 
+                    @:
+                        <li class="active">
+        <a href="@id" data-toggle="tab">
+            @Model.TabsSingleColl[i]._TabTitle
+        </a>
+    </li>
+            }
+            else
+            {
+                    @:
+                        <li>
+        <a href="@id" data-toggle="tab">
+            @Model.TabsSingleColl[i]._TabTitle
+        </a>
+    </li>
+            }
+
+        }
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        @for (int i = 0; i < Model.TabsSingleColl.Count; i++)
+        {
+            string id = "navTab" + i;
+            if (i == 0)
+            {
+                @: 
+                    <div class="tab-pane fade in active" id="@id">
+
+
+                        @Html.Partial("PartialComLayout/_LayoutSingleForm", Model.TabsSingleColl[i]._SingleFormLayout);
+                    </div>
+            }
+            else
+            {
+                @: 
+                    <div class="tab-pane fade" id="@id">
+                    @Html.Partial("PartialComLayout/_LayoutSingleForm", Model.TabsSingleColl[i]._SingleFormLayout);
+                    </div>
+            }
+        }
+        </div>
+
+
+    <div style="text-align: center;">
+        @foreach (ActionButtonControl entity in Model.actionButtonControls)
+        {
+            @Html.Raw(entity.CreateBtn() + " ");
+        }
+    </div>
+
+
+    @Html.Partial("PartialComLayout/_LayoutControlTable", Model.tableEntity);
+
+    @if (Model.IsShowForm)
+    {
+        @Html.Raw("</form>");
+    }
+</div>
